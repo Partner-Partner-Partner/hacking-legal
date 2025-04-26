@@ -4,7 +4,17 @@ from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from typing import List
+<<<<<<< HEAD
 from util import clusterer, parser, loader, saver
+=======
+<<<<<<< HEAD
+from util import contract_parser
+=======
+from util import parser, loader, saver
+>>>>>>> e279fc6298d78ff26a3346ca99727aff21272923
+import shutil
+import tempfile
+>>>>>>> cd6b709adb92c5ca657f08aed49597d5cd516174
 
 app = FastAPI()
 
@@ -38,6 +48,7 @@ async def parse_contract(file: UploadFile = File(...)):
     """
     Upload a contract PDF and receive the parsed contract as structured JSON.
     """
+
     # Save the uploaded file
     _, unique_filename = await saver.save_file_unique(file, UPLOAD_DIR)
 
@@ -49,6 +60,7 @@ async def parse_contract(file: UploadFile = File(...)):
 
     # Return the contract as JSON
     return JSONResponse(content=contract.dict())
+
 
 
 @app.post("/upload_playbook/")
