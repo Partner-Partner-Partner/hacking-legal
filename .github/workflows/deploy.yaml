@@ -35,9 +35,11 @@ jobs:
       env:
         SSH_USER: ${{ secrets.SSH_USER }}
         SSH_HOST: ${{ secrets.SSH_HOST }}
+        MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
       run: |
         ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "
           cd /opt/apps/legal &&
+          echo 'MISTRAL_API_KEY=$MISTRAL_API_KEY' > server/.env &&
           docker compose down &&
           docker compose build &&
           docker compose up -d

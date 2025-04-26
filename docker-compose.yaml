@@ -4,6 +4,9 @@ services:
       context: ./server
     ports:
       - "8001:8000"
+    env_file:
+      - "./server/.env"
+    
 
   nextjs:
     build:
