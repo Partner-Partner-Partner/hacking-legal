@@ -2,7 +2,7 @@ import os
 import uuid
 
 
-def save_file_unique(file, upload_dir):
+async def save_file_unique(file, upload_dir):
     """Save a file under a uniquie filename (uuid) in given upload directory"""
     # Generate unique filename
     file_extension = os.path.splitext(file.filename)[1]

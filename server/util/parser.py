@@ -1,6 +1,5 @@
-import os
+import config
 import time
-from dotenv import load_dotenv
 from model.contract import Contract, ContractRaw, Section
 from langchain_mistralai import ChatMistralAI
 from langchain_core.prompts import (
@@ -9,13 +8,9 @@ from langchain_core.prompts import (
     HumanMessagePromptTemplate,
 )
 
-# Load environment variables from .env file
-load_dotenv()
-api_key = os.getenv("MISTRAL_API_KEY")
-
 # Initialize LangChain Mistral client
 llm = ChatMistralAI(
-    api_key=api_key,
+    api_key=config.MISTRAL_API_KEY,
     model="mistral-large-latest",
 )
 

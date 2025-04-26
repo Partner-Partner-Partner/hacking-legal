@@ -1,13 +1,10 @@
 import os
-import uuid
 import json
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from typing import List
-from util import parser, loader, saver
-import shutil
-import tempfile
+from util import clusterer, parser, loader, saver
 
 app = FastAPI()
 
@@ -42,7 +39,7 @@ async def parse_contract(file: UploadFile = File(...)):
     Upload a contract PDF and receive the parsed contract as structured JSON.
     """
     # Save the uploaded file
-    _, unique_filename = saver.save_file_unique(file, UPLOAD_DIR)
+    _, unique_filename = await saver.save_file_unique(file, UPLOAD_DIR)
 
     # Load the saved file
     contract_text = loader.load_file(unique_filename)
@@ -59,9 +56,11 @@ async def upload_playbook(files: List[UploadFile] = File(...)):
     """
     Upload a set of contracts and build a playbook based on them"""
 
+    contracts = []
+
     for file in files:
         # Save the uploaded file
-        _, unique_filename = saver.save_file_unique(file, UPLOAD_DIR)
+        _, unique_filename = await saver.save_file_unique(file, UPLOAD_DIR)
 
         # Load the saved file
         contract_text = loader.load_file(unique_filename)
@@ -69,9 +68,9 @@ async def upload_playbook(files: List[UploadFile] = File(...)):
         # Parse the contract from loaded file
         contract = parser.full_parse2(contract_text)
 
-        # Return the contract as JSON
-        #
-    return {"message": "success"}
+        contracts.append(contract)
+
+    return {clause: label for (clause, label) in clusterer.cluster(contracts)}
 
 
 @app.post("/contracts/upload")
