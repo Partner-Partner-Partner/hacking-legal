@@ -25,13 +25,19 @@ jobs:
         ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
 
     - name: Copy files to server
+      env:
+        SSH_USER: ${{ secrets.SSH_USER }}
+        SSH_HOST: ${{ secrets.SSH_HOST }}
       run: |
         rsync -avz --exclude='.git' . $SSH_USER@$SSH_HOST:/opt/apps/legal
 
     - name: SSH and deploy
+      env:
+        SSH_USER: ${{ secrets.SSH_USER }}
+        SSH_HOST: ${{ secrets.SSH_HOST }}
       run: |
         ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "
-          cd /path/to/your/monorepo &&
+          cd /opt/apps/legal &&
           docker-compose down &&
           docker-compose build &&
           docker-compose up -d
