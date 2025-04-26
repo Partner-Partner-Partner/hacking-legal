@@ -5,3 +5,4 @@ langchain_mistralai==0.2.10
 pydantic==2.11.3
 python-dotenv==1.1.0
 uvicorn==0.34.2
+python-multipart==0.0.20
