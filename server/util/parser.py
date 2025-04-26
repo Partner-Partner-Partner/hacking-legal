@@ -7,6 +7,7 @@ from langchain_core.prompts import (
     SystemMessagePromptTemplate,
     HumanMessagePromptTemplate,
 )
+from loguru import logger
 
 # Initialize LangChain Mistral client
 llm = ChatMistralAI(
@@ -17,6 +18,7 @@ llm = ChatMistralAI(
 
 def parse_raw_sections(contract_text: str) -> ContractRaw:
     """Parse the contract into rough sections (before deep parsing)."""
+    logger.info("parse_raw_sections")
 
     # Prompt for extracting raw sections
     prompt = ChatPromptTemplate.from_messages(
@@ -39,6 +41,8 @@ def parse_raw_sections(contract_text: str) -> ContractRaw:
 
 def parse_section(section_raw) -> Section:
     """Parse a single section into clauses and subsections."""
+    logger.info("parse_section")
+
     prompt = ChatPromptTemplate.from_messages(
         [
             SystemMessagePromptTemplate.from_template(
@@ -59,6 +63,7 @@ def parse_section(section_raw) -> Section:
 
 def full_parse2(contract_text) -> Contract:
     """Parse all sections of a contract at once to avoid rate limits."""
+    logger.info("full_parse2")
 
     # Prompt to parse all sections together
     prompt = ChatPromptTemplate.from_messages(
@@ -82,6 +87,8 @@ def full_parse2(contract_text) -> Contract:
 
 
 def full_parse(contract_text: str) -> Contract:
+    logger.info("full_parse")
+
     # Step 1: Raw section parsing
     contract_raw = parse_raw_sections(contract_text)
 

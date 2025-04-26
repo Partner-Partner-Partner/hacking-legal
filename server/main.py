@@ -57,6 +57,8 @@ async def upload_playbook(files: List[UploadFile] = File(...)):
     """
     Upload a set of contracts and build a playbook based on them"""
 
+    print("test")
+
     contracts = []
 
     for file in files:

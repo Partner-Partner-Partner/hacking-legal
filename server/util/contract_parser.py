@@ -1,8 +1,6 @@
-import os
+import config
 import time
-from typing import List
-from dotenv import load_dotenv
-import fitz  # PyMuPDF wird als fitz importiert
+import pymupdf
 from model.contract import Contract, ContractRaw, Section
 from langchain_mistralai import ChatMistralAI
 from langchain_core.prompts import (
@@ -10,27 +8,18 @@ from langchain_core.prompts import (
     SystemMessagePromptTemplate,
     HumanMessagePromptTemplate,
 )
-
-# Load environment variables from .env file
-load_dotenv()
-api_key = os.getenv("MISTRAL_API_KEY")
+from loguru import logger
 
 # Initialize LangChain Mistral client
 llm = ChatMistralAI(
-    api_key=api_key,
+    api_key=config.MISTRAL_API_KEY,
     model="mistral-large-latest",
 )
 
 
-def extract_text_from_pdf(filename: str) -> str:
-    """Extract full text from a PDF file, page by page."""
-    with fitz.open(filename) as doc:
-        return chr(12).join([page.get_text() for page in doc])
-
-
-def parse_raw_sections(filename: str) -> ContractRaw:
+def parse_raw_sections(contract_text: str) -> ContractRaw:
     """Parse the contract into rough sections (before deep parsing)."""
-    contract_text = extract_text_from_pdf(filename)
+    logger.info("parse_raw_sections")
 
     # Prompt for extracting raw sections
     prompt = ChatPromptTemplate.from_messages(
@@ -53,6 +42,8 @@ def parse_raw_sections(filename: str) -> ContractRaw:
 
 def parse_section(section_raw) -> Section:
     """Parse a single section into clauses and subsections."""
+    logger.info("parse_section")
+
     prompt = ChatPromptTemplate.from_messages(
         [
             SystemMessagePromptTemplate.from_template(
@@ -71,10 +62,9 @@ def parse_section(section_raw) -> Section:
     return result
 
 
-def full_parse2(filename) -> Contract:
+def full_parse2(contract_text) -> Contract:
     """Parse all sections of a contract at once to avoid rate limits."""
-
-    contract_text = extract_text_from_pdf(filename)
+    logger.info("full_parse2")
 
     # Prompt to parse all sections together
     prompt = ChatPromptTemplate.from_messages(
@@ -97,32 +87,19 @@ def full_parse2(filename) -> Contract:
     return result
 
 
-def full_parse(filename: str, method: str = "batch") -> Contract:
-    """
-    Full parsing pipeline.
-    Args:
-        filename: Path to the PDF contract
-        method: "batch" (recommended) or "single"
-    Returns:
-        Fully parsed Contract object
-    """
+def full_parse(contract_text: str) -> Contract:
+    logger.info("full_parse2")
 
-    # Step 1: Raw section parsing
-    contract_raw = parse_raw_sections(filename)
-
-    # Step 2: Choose parsing strategy
     sections = []
-    if method == "single":
-        # Parse each section separately (slower)
-        for section_raw in contract_raw.sections:
-            detailed_section = parse_section(section_raw)
-            sections.append(detailed_section)
-            time.sleep(1)  # sleep to prevent rate limits
-    elif method == "batch":
-        # Use full_parse2 to parse all sections at once
-        sections = full_parse2(contract_raw)
-    else:
-        raise ValueError(f"Unknown parsing method: {method}")
+
+    # Parse raw sections
+    contract_raw = parse_raw_sections(contract_text)
+
+    # Parse each section separately (slower)
+    for section_raw in contract_raw.sections:
+        detailed_section = parse_section(section_raw)
+        sections.append(detailed_section)
+        time.sleep(1)  # sleep to prevent rate limits
 
     # Step 3: Build final Contract object
     return Contract(
