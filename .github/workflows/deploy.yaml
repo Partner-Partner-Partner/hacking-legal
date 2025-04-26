@@ -1,0 +1,39 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up SSH
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        SSH_HOST: ${{ secrets.SSH_HOST }}
+        SSH_USER: ${{ secrets.SSH_USER }}
+      run: |
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
+
+    - name: Copy files to server
+      run: |
+        rsync -avz --exclude='.git' . $SSH_USER@$SSH_HOST:/opt/apps/legal
+
+    - name: SSH and deploy
+      run: |
+        ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "
+          cd /path/to/your/monorepo &&
+          docker-compose down &&
+          docker-compose build &&
+          docker-compose up -d
+        "
+

@@ -1,0 +1,22 @@
+# Ignore Next.js build output
+.next/
+out/
+
+# Ignore environment-specific files
+.env
+.env.*
+
+# Ignore node_modules
+node_modules/
+
+# Ignore log files
+*.log
+logs/
+
+# Ignore coverage reports
+.coverage
+coverage.xml
+
+# Ignore Jest cache
+.jest/
+

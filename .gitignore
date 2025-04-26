@@ -1,0 +1,52 @@
+# Ignore node_modules for all JavaScript/TypeScript projects
+node_modules/
+
+# Ignore Python byte-compiled files
+__pycache__/
+*.py[cod]
+
+# Ignore environment-specific files
+.env
+.env.*
+
+# Ignore Docker-specific files
+docker-compose.override.yml
+
+# Ignore log files
+*.log
+logs/
+
+# Ignore virtual environments
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+
+# Ignore macOS and Windows-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore build artifacts
+build/
+dist/
+
+# Ignore coverage reports
+.coverage
+coverage.xml
+
+# Ignore Pytest cache
+.pytest_cache/
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Ignore Docker build context
+.dockerignore
+
+# Ignore Fly.io-specific files
+.fly/
+
