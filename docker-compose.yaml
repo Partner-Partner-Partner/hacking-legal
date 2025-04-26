@@ -1,14 +1,14 @@
 services:
   fastapi:
     build:
-      context: ./fastapi-app
+      context: ./server
     ports:
       - "8000:8000"
 
 
   nextjs:
     build:
-      context: ./nextjs-app
+      context: ./client
     ports:
       - "3000:3000"
 
