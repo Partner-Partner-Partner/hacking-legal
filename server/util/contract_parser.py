@@ -1,8 +1,7 @@
 import os
 import time
-from typing import List
 from dotenv import load_dotenv
-import fitz  # PyMuPDF wird als fitz importiert
+import pymupdf
 from model.contract import Contract, ContractRaw, Section
 from langchain_mistralai import ChatMistralAI
 from langchain_core.prompts import (
@@ -24,7 +23,7 @@ llm = ChatMistralAI(
 
 def extract_text_from_pdf(filename: str) -> str:
     """Extract full text from a PDF file, page by page."""
-    with fitz.open(filename) as doc:
+    with pymupdf.open(filename) as doc:
         return chr(12).join([page.get_text() for page in doc])
 
 
