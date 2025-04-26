@@ -5,7 +5,7 @@ from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from typing import List
-from util import contract_parser
+from util import parser, loader, saver
 import shutil
 import tempfile
 
@@ -41,16 +41,37 @@ async def parse_contract(file: UploadFile = File(...)):
     """
     Upload a contract PDF and receive the parsed contract as structured JSON.
     """
-    # Save the uploaded file temporarily
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp:
-        shutil.copyfileobj(file.file, tmp)
-        tmp_path = tmp.name
+    # Save the uploaded file
+    _, unique_filename = saver.save_file_unique(file, UPLOAD_DIR)
 
-    # Parse the contract
-    contract = contract_parser.full_parse2(tmp_path)
+    # Load the saved file
+    contract_text = loader.load_file(unique_filename)
+
+    # Parse the contract from loaded file
+    contract = parser.full_parse2(contract_text)
 
     # Return the contract as JSON
     return JSONResponse(content=contract.dict())
+
+
+@app.post("/upload_playbook/")
+async def upload_playbook(files: List[UploadFile] = File(...)):
+    """
+    Upload a set of contracts and build a playbook based on them"""
+
+    for file in files:
+        # Save the uploaded file
+        _, unique_filename = saver.save_file_unique(file, UPLOAD_DIR)
+
+        # Load the saved file
+        contract_text = loader.load_file(unique_filename)
+
+        # Parse the contract from loaded file
+        contract = parser.full_parse2(contract_text)
+
+        # Return the contract as JSON
+        #
+    return {"message": "success"}
 
 
 @app.post("/contracts/upload")
@@ -60,15 +81,7 @@ async def upload_contracts(contract_files: List[UploadFile] = File(...)):
         saved_files = []
 
         for file in contract_files:
-            # Generate unique filename
-            file_extension = os.path.splitext(file.filename)[1]
-            unique_filename = f"{uuid.uuid4()}{file_extension}"
-            file_path = os.path.join(UPLOAD_DIR, unique_filename)
-
-            # Save the file
-            with open(file_path, "wb") as buffer:
-                buffer.write(await file.read())
-
+            filename, unique_filename = saver.save_file_unique(file, UPLOAD_DIR)
             saved_files.append({"filename": file.filename, "saved_as": unique_filename})
 
         return {
