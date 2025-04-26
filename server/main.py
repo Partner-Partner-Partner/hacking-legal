@@ -63,8 +63,11 @@ async def upload_playbook(files: List[UploadFile] = File(...)):
         # Save the uploaded file
         _, unique_filename = await saver.save_file_unique(file, UPLOAD_DIR)
 
+        # Build file path
+        file_path = os.path.join(UPLOAD_DIR, unique_filename)
+
         # Load the saved file
-        contract_text = loader.load_file(unique_filename)
+        contract_text = loader.load_file(file_path)
 
         # Parse the contract from loaded file
         contract = parser.full_parse2(contract_text)
