@@ -1,19 +1,15 @@
-version: '3.8'
-
 services:
   fastapi:
     build:
       context: ./fastapi-app
     ports:
       - "8000:8000"
-    environment:
-      - ENV_VARIABLE=value
+
 
   nextjs:
     build:
       context: ./nextjs-app
     ports:
       - "3000:3000"
-    environment:
-      - NODE_ENV=production
+
 
