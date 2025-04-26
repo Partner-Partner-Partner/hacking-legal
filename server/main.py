@@ -5,7 +5,11 @@ from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from typing import List
+<<<<<<< HEAD
 from util import contract_parser
+=======
+from util import parser, loader, saver
+>>>>>>> e279fc6298d78ff26a3346ca99727aff21272923
 import shutil
 import tempfile
 
@@ -41,6 +45,7 @@ async def parse_contract(file: UploadFile = File(...)):
     """
     Upload a contract PDF and receive the parsed contract as structured JSON.
     """
+<<<<<<< HEAD
     # Save the uploaded file temporarily
     with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp:
         shutil.copyfileobj(file.file, tmp)
@@ -48,11 +53,44 @@ async def parse_contract(file: UploadFile = File(...)):
 
     # Parse the contract
     contract = contract_parser.full_parse2(tmp_path)
+=======
+    # Save the uploaded file
+    _, unique_filename = saver.save_file_unique(file, UPLOAD_DIR)
+
+    # Load the saved file
+    contract_text = loader.load_file(unique_filename)
+
+    # Parse the contract from loaded file
+    contract = parser.full_parse2(contract_text)
+>>>>>>> e279fc6298d78ff26a3346ca99727aff21272923
 
     # Return the contract as JSON
     return JSONResponse(content=contract.dict())
 
 
+<<<<<<< HEAD
+=======
+@app.post("/upload_playbook/")
+async def upload_playbook(files: List[UploadFile] = File(...)):
+    """
+    Upload a set of contracts and build a playbook based on them"""
+
+    for file in files:
+        # Save the uploaded file
+        _, unique_filename = saver.save_file_unique(file, UPLOAD_DIR)
+
+        # Load the saved file
+        contract_text = loader.load_file(unique_filename)
+
+        # Parse the contract from loaded file
+        contract = parser.full_parse2(contract_text)
+
+        # Return the contract as JSON
+        #
+    return {"message": "success"}
+
+
+>>>>>>> e279fc6298d78ff26a3346ca99727aff21272923
 @app.post("/contracts/upload")
 async def upload_contracts(contract_files: List[UploadFile] = File(...)):
     """Simple endpoint to receive and save files"""
@@ -60,6 +98,7 @@ async def upload_contracts(contract_files: List[UploadFile] = File(...)):
         saved_files = []
 
         for file in contract_files:
+<<<<<<< HEAD
             # Generate unique filename
             file_extension = os.path.splitext(file.filename)[1]
             unique_filename = f"{uuid.uuid4()}{file_extension}"
@@ -69,6 +108,9 @@ async def upload_contracts(contract_files: List[UploadFile] = File(...)):
             with open(file_path, "wb") as buffer:
                 buffer.write(await file.read())
 
+=======
+            filename, unique_filename = saver.save_file_unique(file, UPLOAD_DIR)
+>>>>>>> e279fc6298d78ff26a3346ca99727aff21272923
             saved_files.append({"filename": file.filename, "saved_as": unique_filename})
 
         return {

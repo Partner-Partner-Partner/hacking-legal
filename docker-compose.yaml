@@ -1,0 +1,17 @@
+services:
+  fastapi:
+    build:
+      context: ./server
+    ports:
+      - "8001:8000"
+    env_file:
+      - "./server/.env"
+    
+
+  nextjs:
+    build:
+      context: ./client
+    ports:
+      - "3001:3000"
+
+

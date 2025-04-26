@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -39,3 +40,27 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+=======
+# Ignore Next.js build output
+.next/
+out/
+
+# Ignore environment-specific files
+.env
+.env.*
+
+# Ignore node_modules
+node_modules/
+
+# Ignore log files
+*.log
+logs/
+
+# Ignore coverage reports
+.coverage
+coverage.xml
+
+# Ignore Jest cache
+.jest/
+
+>>>>>>> e279fc6298d78ff26a3346ca99727aff21272923

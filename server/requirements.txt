@@ -1,0 +1,9 @@
+fastapi==0.115.12
+pymupdf==1.25.5
+langchain_core==0.3.56
+langchain_mistralai==0.2.10
+pydantic==2.11.3
+python-dotenv==1.1.0
+uvicorn==0.34.2
+python-multipart==0.0.20
+python-docx==1.1.2
