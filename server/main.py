@@ -76,7 +76,7 @@ async def upload_playbook(files: List[UploadFile] = File(...)):
 
         contracts.append(contract)
 
-    return {clause: label for (clause, label) in clusterer.cluster(contracts)}
+    return clusterer.cluster(contracts)
 
 
 @app.post("/contracts/upload")
