@@ -1,5 +1,4 @@
 "use client";
-import { useEffect, useState, useRef } from 'react';
 import { samplePlaybook } from "@/data/samplePlaybook";
 import { PlaybookSidebar } from "@/components/playbook/PlaybookSidebar";
 import { motion } from "framer-motion";
