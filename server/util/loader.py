@@ -5,7 +5,7 @@ import docx
 def load_docx(filename: str) -> str:
     """Extract full text from a docx file"""
     doc = docx.Document(filename)
-    return "\n".join([p for p in doc.paragraphs])
+    return "\n".join([p.text for p in doc.paragraphs])
 
 
 def load_pdf(filename: str) -> str:
