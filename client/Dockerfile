@@ -7,8 +7,8 @@ WORKDIR /app
 # Copy the package.json and package-lock.json files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install
+# Install dependencies with legacy peer deps flag to bypass React version conflicts
+RUN npm install --legacy-peer-deps
 
 # Copy the rest of the application code
 COPY . .
