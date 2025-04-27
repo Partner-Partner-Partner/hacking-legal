@@ -5,8 +5,9 @@ from model.playbook import Playbook
 
 async def init_db():
     client = AsyncIOMotorClient("mongodb://root:example@mongo:27017/")
+    db = client["p&p&p"]
 
     await init_beanie(
-        database="p&p&p",
+        database=db,
         document_models=[Playbook],
     )
