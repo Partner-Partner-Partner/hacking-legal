@@ -125,14 +125,20 @@ def generate_playbook(clusters: Dict[int, List[str]]) -> Playbook:
                         - Each variant must have:
                         text (No duplicates)
                         favorability (Most Favorable / Am Vorteilhaftesten, Balanced / Ausgewogen, Acceptable / Akzeptabel, Unacceptable / Inakzeptabel)
-                        justification
+                        internal_justification (Justification related to own organization)
+                        exteral_justification (Justification related to the contract partner)
  
                         Output strictly as JSON in a field 'variants' with given structure.
                         For JSON values use the German language.
 
                         title: "..."
                         variants: [
-                            {{"text": "...", "favorability": "...", "justification": "...", }},
+                            {{
+                            "text": "...", 
+                            "favorability": "...", 
+                            "internal_justification": "...",
+                            "external_justification": "...",
+                            }},
                         ]
                         """
                     ),
