@@ -25,7 +25,7 @@ git clone https://github.com/your-username/hacking-legal.git
 cd hacking-legal
 ```
 
-Running the App
+### Running the App
 ```bash
 docker-compose up --build
 ```
