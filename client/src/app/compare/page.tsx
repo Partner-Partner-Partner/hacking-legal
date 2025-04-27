@@ -8,8 +8,24 @@ import { CompareSidebar } from "@/components/compare/CompareSidebar";
 import { DiffViewer } from "@/components/compare/DiffViewer";
 import { useCompareNavigation } from '@/hooks/useCompareNavigation';
 import { ClauseClassification } from "@/types/comparison";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbList,
+  BreadcrumbPage,
+} from "@/components/ui/breadcrumb";
+import { Separator } from "@/components/ui/separator";
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+  useSidebar,
+} from "@/components/ui/sidebar";
 
-const ComparePage = () => {
+// Internal wrapper component to use the useSidebar hook
+function CompareSidebarContent() {
+  const sidebar = useSidebar();
+  
   // Track active sections and clauses
   const { 
     activeSection, 
@@ -52,7 +68,7 @@ const ComparePage = () => {
   };
 
   return (
-    <div className="flex h-screen bg-background">
+    <>
       <CompareSidebar
         contract={sampleContract}
         playbook={samplePlaybook}
@@ -62,10 +78,7 @@ const ComparePage = () => {
         onClauseClick={handleClauseClick}
         classifications={classifications}
       />
-      <main className="flex-1 flex flex-col overflow-hidden">
-        <div className="border-b border-border p-4 bg-background">
-          <h1 className="text-xl font-semibold">Contract Analysis</h1>
-        </div>
+      <SidebarInset>
         <motion.div 
           className="flex-1 overflow-y-auto scroll-smooth p-6" 
           ref={contentRef}
@@ -74,6 +87,15 @@ const ComparePage = () => {
           transition={{ duration: 0.3 }}
         >
           <div className="max-w-6xl mx-auto">
+            <div className="mb-4">
+              <Breadcrumb>
+                <BreadcrumbList>
+                  <BreadcrumbItem className="hidden md:block">
+                    <BreadcrumbPage>Contract Analysis</BreadcrumbPage>
+                  </BreadcrumbItem>
+                </BreadcrumbList>
+              </Breadcrumb>
+            </div>
             <DiffViewer
               contract={sampleContract}
               playbook={samplePlaybook}
@@ -88,8 +110,16 @@ const ComparePage = () => {
             />
           </div>
         </motion.div>
-      </main>
-    </div>
+      </SidebarInset>
+    </>
+  );
+}
+
+const ComparePage = () => {
+  return (
+    <SidebarProvider>
+      <CompareSidebarContent />
+    </SidebarProvider>
   );
 };
 
