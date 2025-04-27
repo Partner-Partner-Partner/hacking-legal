@@ -9,7 +9,8 @@ from uuid import uuid4, UUID
 class PlaybookVariant(BaseModel):
     text: str
     favorability: str  # Most Favorable, Balanced, Acceptable, Unacceptable
-    justification: str
+    internal_justification: str
+    external_justification: str
 
 
 class PlaybookSection(BaseModel):
