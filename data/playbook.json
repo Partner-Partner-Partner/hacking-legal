@@ -1,0 +1,559 @@
+{
+    "sections": [
+        {
+            "clauses": [
+                {
+                    "text": "Dieser Vertrag regelt die Lieferung von Standardkomponenten (Spezifikation gemäß Anhang A) durch den Lieferanten an den Käufer. Qualität und Zuverlässigkeit sind wesentliche Kriterien.\nDieser Vertrag regelt die Lieferung von Standardkomponenten (Spezifikation gemäß Anhang A) durch den Lieferanten an den Käufer. Qualität und Zuverlässigkeit sind wesentliche Kriterien.",
+                    "variants": [
+                        {
+                            "favorability": "Most Favorable",
+                            "justification": "This clause is favorable as it clearly defines the scope of the agreement and emphasizes the importance of quality and reliability, which are crucial for the Buyer's operations.",
+                            "text": "This agreement governs the delivery of standard components (as specified in Annex A) by the Supplier to the Buyer. Quality and reliability are essential criteria. This clause is favorable as it clearly defines the scope of the agreement and emphasizes the importance of quality and reliability, which are crucial for the Buyer's operations."
+                        },
+                        {
+                            "favorability": "Balanced",
+                            "justification": "This clause is balanced as it acknowledges the importance of quality and reliability while leaving room for negotiation on the specific standards.",
+                            "text": "This agreement governs the delivery of standard components (as specified in Annex A) by the Supplier to the Buyer. The Supplier shall ensure that the components meet the quality and reliability standards agreed upon by both parties. This clause is balanced as it acknowledges the importance of quality and reliability while leaving room for negotiation on the specific standards."
+                        },
+                        {
+                            "favorability": "Acceptable",
+                            "justification": "This clause is acceptable as it acknowledges the importance of quality and reliability, but the use of 'reasonable efforts' introduces some ambiguity.",
+                            "text": "This agreement governs the delivery of standard components (as specified in Annex A) by the Supplier to the Buyer. The Supplier shall make reasonable efforts to ensure the quality and reliability of the components. This clause is acceptable as it acknowledges the importance of quality and reliability, but the use of 'reasonable efforts' introduces some ambiguity."
+                        },
+                        {
+                            "favorability": "Unacceptable",
+                            "justification": "This clause is unacceptable as it completely absolves the Supplier of any responsibility for the quality and reliability of the components, which is not in the Buyer's best interest.",
+                            "text": "This agreement governs the delivery of standard components (as specified in Annex A) by the Supplier to the Buyer. The Supplier shall have no liability for any defects or failures in the components. This clause is unacceptable as it completely absolves the Supplier of any responsibility for the quality and reliability of the components, which is not in the Buyer's best interest."
+                        }
+                    ]
+                }
+            ],
+            "title": "Cluster 0"
+        },
+        {
+            "clauses": [
+                {
+                    "text": "Lieferung von Komponenten gemäß Anhang A nach Einzelbestellungen des Käufers.\nLieferung von Komponenten gemäß Anhang A nach Einzelbestellungen des Käufers.",
+                    "variants": [
+                        {
+                            "favorability": "Acceptable",
+                            "justification": "This clause is acceptable as it clearly outlines the delivery obligations of the seller based on the buyer's orders, providing a structured approach to component delivery.",
+                            "text": "Delivery of Components\nThe Seller shall deliver the components specified in Exhibit A upon receipt of individual orders from the Buyer."
+                        },
+                        {
+                            "favorability": "Balanced",
+                            "justification": "This variant is balanced as it emphasizes the agreement between both parties, ensuring mutual understanding and cooperation in the delivery process.",
+                            "text": "Component Delivery\nThe Seller agrees to deliver the components listed in Exhibit A following individual orders placed by the Buyer."
+                        },
+                        {
+                            "favorability": "Most Favorable",
+                            "justification": "This clause is most favorable as it concisely states the delivery terms, emphasizing the seller's responsibility to fulfill orders promptly and accurately according to the specified details.",
+                            "text": "Delivery Terms\nUpon receiving individual orders from the Buyer, the Seller shall deliver the components as detailed in Exhibit A."
+                        }
+                    ]
+                }
+            ],
+            "title": "Cluster 1"
+        },
+        {
+            "clauses": [
+                {
+                    "text": "(1) Der Lieferant sichert zu, dass die Ware den Spezifikationen in Anhang A entspricht und handelsübliche Qualität aufweist.\n(1) Der Lieferant sichert zu, dass die Ware den Spezifikationen in Anhang A entspricht und handelsübliche Qualität aufweist.\n(1) Der Lieferant sichert Konformität mit Anhang 2 und eine branchenübliche Qualität zu.",
+                    "variants": [
+                        {
+                            "favorability": "Acceptable",
+                            "justification": "This clause ensures that the supplier guarantees the product meets the specifications in Annex A and is of merchantable quality, which is acceptable but does not provide additional assurances beyond basic requirements.",
+                            "text": "Der Lieferant sichert zu, dass die Ware den Spezifikationen in Anhang A entspricht und handelsübliche Qualität aufweist."
+                        },
+                        {
+                            "favorability": "Acceptable",
+                            "justification": "This clause is similar to the first one, providing the same level of assurance regarding the product's conformity to specifications and merchantable quality.",
+                            "text": "Der Lieferant sichert zu, dass die Ware den Spezifikationen in Anhang A entspricht und handelsübliche Qualität aufweist."
+                        },
+                        {
+                            "favorability": "Balanced",
+                            "justification": "This clause is more favorable as it specifies conformity with Annex 2 and industry-standard quality, providing a higher level of assurance compared to the previous clauses.",
+                            "text": "Der Lieferant sichert Konformität mit Anhang 2 und eine branchenübliche Qualität zu."
+                        }
+                    ]
+                }
+            ],
+            "title": "Cluster 2"
+        },
+        {
+            "clauses": [
+                {
+                    "text": "(2) Die Gewährleistungsfrist beträgt 24 Monate ab Lieferung.\n(2) Die Gewährleistungsfrist beträgt 24 Monate ab Lieferung.\nGewährleistungsfrist: 24 Monate ab Lieferung.\n(2) Gewährleistungsfrist: 24 Monate ab Lieferung.\nGewährleistungsfrist: 18 Monate ab Lieferung.\n(2) Gewährleistung: 24 Monate ab Lieferung.",
+                    "variants": [
+                        {
+                            "favorability": "Most Favorable",
+                            "justification": "This variant provides the longest warranty period, offering the most protection for the buyer.",
+                            "text": "The warranty period is 36 months from the date of delivery."
+                        },
+                        {
+                            "favorability": "Balanced",
+                            "justification": "This variant is the most common among the provided clauses and offers a reasonable level of protection for the buyer.",
+                            "text": "The warranty period is 24 months from the date of delivery."
+                        },
+                        {
+                            "favorability": "Acceptable",
+                            "justification": "Although this variant offers a shorter warranty period, it is still within an acceptable range for many industries. However, it provides less protection for the buyer compared to the 24-month and 36-month periods.",
+                            "text": "The warranty period is 18 months from the date of delivery."
+                        }
+                    ]
+                }
+            ],
+            "title": "Cluster 3"
+        },
+        {
+            "clauses": [
+                {
+                    "text": "(3) Bei Mängeln hat der Käufer das Recht auf Nacherfüllung (Wahlrecht beim Käufer). Kosten der Nacherfüllung trägt der Lieferant, mit Ausnahme von Aus- und Einbaukosten, die nur bei Verschulden des Lieferanten ersetzt werden.\n(3) Bei Mängeln hat der Käufer das Recht auf Nacherfüllung (Wahlrecht beim Käufer). Kosten der Nacherfüllung trägt der Lieferant, mit Ausnahme von Aus- und Einbaukosten, die nur bei Verschulden des Lieferanten ersetzt werden.\nBei Mängeln erfolgt Nacherfüllung nach Wahl des Lieferanten (Nachbesserung oder Ersatzlieferung). Schlägt die Nacherfüllung fehl, hat der Kunde das Recht auf Minderung oder Rücktritt. Aus- und Einbaukosten werden nur bei Verschulden des Lieferanten und nach vorheriger Abstimmung übernommen.\n(3) Nacherfüllung nach Wahl des Lieferanten. Kosten trägt der Lieferant, außer Aus-/Einbaukosten (nur bei Verschulden).",
+                    "variants": [
+                        {
+                            "favorability": "Most Favorable",
+                            "justification": "This variant is most favorable to the buyer as it provides the buyer with the choice of remedy and ensures that the supplier bears all costs except for dismantling and installation costs, which are only reimbursed if the supplier is at fault.",
+                            "text": "In case of defects, the buyer has the right to subsequent performance (buyer's choice). Costs of subsequent performance shall be borne by the supplier, with the exception of dismantling and installation costs, which shall only be reimbursed in the event of fault on the part of the supplier."
+                        },
+                        {
+                            "favorability": "Acceptable",
+                            "justification": "This variant is acceptable as it provides for subsequent performance and the right to reduction or withdrawal if subsequent performance fails. However, it is less favorable than the most favorable variant because the choice of remedy lies with the supplier and dismantling and installation costs are only borne if the supplier is at fault and after prior agreement.",
+                            "text": "In case of defects, subsequent performance shall be carried out at the supplier's discretion (remedy or replacement). If the subsequent performance fails, the buyer has the right to reduction or withdrawal. Dismantling and installation costs shall only be borne in the event of fault on the part of the supplier and after prior agreement."
+                        },
+                        {
+                            "favorability": "Unacceptable",
+                            "justification": "This variant is unacceptable as it does not provide the buyer with any choice of remedy and does not guarantee that the supplier will bear all costs of subsequent performance. Additionally, it does not provide for any right to reduction or withdrawal if subsequent performance fails.",
+                            "text": "Subsequent performance at the supplier's discretion. Costs borne by the supplier, except for dismantling/installation costs (only in case of fault)."
+                        }
+                    ]
+                }
+            ],
+            "title": "Cluster 4"
+        },
+        {
+            "clauses": [
+                {
+                    "text": "(4) Mängel sind unverzüglich, spätestens innerhalb von 7 Werktagen nach Erhalt (offene Mängel) bzw. Entdeckung (versteckte Mängel) schriftlich zu rügen.\n(4) Mängel sind unverzüglich, spätestens innerhalb von 7 Werktagen nach Erhalt (offene Mängel) bzw. Entdeckung (versteckte Mängel) schriftlich zu rügen.\nRügefrist nach § 377 HGB: Offene Mängel unverzüglich (innerhalb von 5 Werktagen), versteckte Mängel unverzüglich nach Entdeckung (innerhalb von 5 Werktagen).\n(4) Rügefrist § 377 HGB: 7 Tage für offene, 10 Tage nach Entdeckung für versteckte Mängel.\nRügefrist § 377 HGB: 5 Werktage für offene, 7 Werktage nach Entdeckung für versteckte Mängel.\n(4) Rügefrist § 377 HGB: 3 Werktage für offene, 5 Werktage nach Entdeckung für versteckte Mängel.",
+                    "variants": [
+                        {
+                            "favorability": "Acceptable",
+                            "justification": "This clause provides a reasonable timeframe for reporting defects, allowing 7 days for both apparent and hidden defects. It balances the buyer's need for inspection time with the seller's need for prompt notification.",
+                            "text": "Mängel sind unverzüglich, spätestens innerhalb von 7 Werktagen nach Erhalt (offene Mängel) bzw. Entdeckung (versteckte Mängel) schriftlich zu rügen."
+                        },
+                        {
+                            "favorability": "Balanced",
+                            "justification": "This clause is balanced as it requires prompt notification of defects, with a 5-day period for both apparent and hidden defects. It aligns with § 377 HGB, providing clarity and fairness to both parties.",
+                            "text": "Rügefrist nach § 377 HGB: Offene Mängel unverzüglich (innerhalb von 5 Werktagen), versteckte Mängel unverzüglich nach Entdeckung (innerhalb von 5 Werktagen)."
+                        },
+                        {
+                            "favorability": "Most Favorable",
+                            "justification": "This clause is most favorable as it allows a generous timeframe for reporting defects, with 7 days for apparent defects and 10 days for hidden defects. This provides ample time for the buyer to inspect and report any issues.",
+                            "text": "(4) Rügefrist § 377 HGB: 7 Tage für offene, 10 Tage nach Entdeckung für versteckte Mängel."
+                        },
+                        {
+                            "favorability": "Unacceptable",
+                            "justification": "This clause is unfavorable as it requires a very short timeframe for reporting defects, with only 3 days for apparent defects and 5 days for hidden defects. This may not provide sufficient time for the buyer to thoroughly inspect and report issues.",
+                            "text": "(4) Rügefrist § 377 HGB: 3 Werktage für offene, 5 Werktage nach Entdeckung für versteckte Mängel."
+                        }
+                    ]
+                }
+            ],
+            "title": "Cluster 5"
+        },
+        {
+            "clauses": [
+                {
+                    "text": "(1) Angegebene Liefertermine sind Richtwerte, aber nach Bestätigung durch den Lieferanten verbindlich. Lieferung erfolgt DAP Werk Musterstadt (Incoterms 2020).\n(1) Angegebene Liefertermine sind Richtwerte, aber nach Bestätigung durch den Lieferanten verbindlich. Lieferung erfolgt DAP Werk Musterstadt (Incoterms 2020).40\nLiefertermine sind ca.-Termine, werden aber nach Bestmöglichkeit angestrebt. Lieferung FCA Hamburg (Incoterms 2020).",
+                    "variants": [
+                        {
+                            "favorability": "Most Favorable",
+                            "justification": "This variant is most favorable because it combines the flexibility of approximate delivery dates with the commitment to strive for them. Additionally, the delivery term DAP (Delivered At Place) Musterstadt is advantageous as it minimizes the buyer's responsibility and risk.",
+                            "text": "Liefertermine sind ca.-Termine, werden aber nach Bestmöglichkeit angestrebt. Lieferung erfolgt DAP Werk Musterstadt (Incoterms 2020)."
+                        },
+                        {
+                            "favorability": "Balanced",
+                            "justification": "This variant is balanced because it makes delivery dates binding upon confirmation by the supplier, providing some certainty. However, the delivery term FCA (Free Carrier) Hamburg shifts more responsibility and risk to the buyer compared to DAP.",
+                            "text": "Angegebene Liefertermine sind Richtwerte, aber nach Bestätigung durch den Lieferanten verbindlich. Lieferung erfolgt FCA Hamburg (Incoterms 2020)."
+                        },
+                        {
+                            "favorability": "Acceptable",
+                            "justification": "This variant is acceptable because while it provides the advantageous delivery term DAP, the delivery dates are only general guidelines and may not be reliably met.",
+                            "text": "Liefertermine sind ca.-Termine und dienen nur als allgemeine Richtlinie. Lieferung erfolgt DAP Werk Musterstadt (Incoterms 2020)."
+                        }
+                    ]
+                }
+            ],
+            "title": "Cluster 6"
+        },
+        {
+            "clauses": [
+                {
+                    "text": "(2) Bei schuldhaftem Verzug haftet der Lieferant für den nachgewiesenen Verzögerungsschaden bis maximal 5% des jeweiligen Bestellwerts.\n(2) Bei schuldhaftem Verzug haftet der Lieferant für den nachgewiesenen Verzögerungsschaden bis maximal 5% des jeweiligen Bestellwerts.",
+                    "variants": [
+                        {
+                            "favorability": "Most Favorable",
+                            "justification": "This clause limits the supplier's liability for delay damages to a maximum of 5% of the order value, which is very favorable for the supplier as it caps their financial risk.",
+                            "text": "In case of culpable delay, the supplier is liable for the proven delay damage up to a maximum of 5% of the respective order value."
+                        },
+                        {
+                            "favorability": "Balanced",
+                            "justification": "This version increases the liability cap to 10%, providing a more balanced approach between the supplier's risk and the customer's protection.",
+                            "text": "In case of culpable delay, the supplier is liable for the proven delay damage up to a maximum of 10% of the respective order value."
+                        },
+                        {
+                            "favorability": "Acceptable",
+                            "justification": "With a 15% liability cap, this variant is still acceptable for the supplier while offering more protection to the customer.",
+                            "text": "In case of culpable delay, the supplier is liable for the proven delay damage up to a maximum of 15% of the respective order value."
+                        },
+                        {
+                            "favorability": "Unacceptable",
+                            "justification": "This clause removes the liability cap, making the supplier fully liable for all delay damages. This is unacceptable for the supplier due to the high financial risk involved.",
+                            "text": "In case of culpable delay, the supplier is liable for all proven delay damages, with no maximum limit."
+                        }
+                    ]
+                }
+            ],
+            "title": "Cluster 7"
+        },
+        {
+            "clauses": [
+                {
+                    "text": "(1) Preise gemäß aktueller Preisliste des Lieferanten (Anhang B), Anpassungen vorbehalten mit 4 Wochen Vorankündigung.\n(1) Preise gemäß aktueller Preisliste des Lieferanten (Anhang B), Anpassungen vorbehalten mit 4 Wochen Vorankündigung.",
+                    "variants": [
+                        {
+                            "favorability": "Most Favorable",
+                            "justification": "This variant provides clear pricing based on the supplier's current price list, with adjustments allowed with a 4-week notice period. This ensures transparency and predictability in pricing.",
+                            "text": "Preise gemäß aktueller Preisliste des Lieferanten (Anhang B), Anpassungen vorbehalten mit 4 Wochen Vorankündigung."
+                        }
+                    ]
+                }
+            ],
+            "title": "Cluster 8"
+        },
+        {
+            "clauses": [
+                {
+                    "text": "(2) Zahlung: 30 Tage nach Rechnungseingang mit 2% Skonto, oder 45 Tage netto.\n(2) Zahlung: 30 Tage nach Rechnungseingang mit 2% Skonto, oder 45 Tage netto.127\nZahlung: 30 Tage netto nach Rechnungseingang.\n(2) Zahlung: 30 Tage netto. Skonto wird nicht gewährt.\nZahlung: 30 Tage netto.\n(2) Zahlung: 30 Tage netto ab Rechnungsdatum.",
+                    "variants": [
+                        {
+                            "favorability": "Most Favorable",
+                            "justification": "This option provides the longest payment term of 45 days net, with an additional discount for early payment, making it the most favorable for cash flow management.",
+                            "text": "Zahlung: 30 Tage nach Rechnungseingang mit 2% Skonto, oder 45 Tage netto."
+                        },
+                        {
+                            "favorability": "Balanced",
+                            "justification": "This option offers a standard 30-day payment term from the date of invoice receipt, providing a balanced approach between prompt payment and reasonable credit extension.",
+                            "text": "Zahlung: 30 Tage netto nach Rechnungseingang."
+                        },
+                        {
+                            "favorability": "Acceptable",
+                            "justification": "This option sets a 30-day payment term from the invoice date, which is acceptable but slightly less flexible than starting from the date of receipt.",
+                            "text": "Zahlung: 30 Tage netto ab Rechnungsdatum."
+                        },
+                        {
+                            "favorability": "Unacceptable",
+                            "justification": "This option mandates payment within 30 days with no discount for early payment, making it the least favorable due to its strict terms and lack of incentives for early settlement.",
+                            "text": "(2) Zahlung: 30 Tage netto. Skonto wird nicht gewährt."
+                        }
+                    ]
+                }
+            ],
+            "title": "Cluster 9"
+        },
+        {
+            "clauses": [
+                {
+                    "text": "(1) Die Haftung des Lieferanten für leichte Fahrlässigkeit ist ausgeschlossen, es sei denn, es handelt sich um die Verletzung von Kardinalpflichten oder Schäden an Leben, Körper, Gesundheit. Bei leicht fahrlässiger Verletzung von Kardinalpflichten ist die Haftung auf den vertragstypischen, vorhersehbaren Schaden begrenzt.\n(1) Die Haftung des Lieferanten für leichte Fahrlässigkeit ist ausgeschlossen, es sei denn, es handelt sich um die Verletzung von Kardinalpflichten oder Schäden an Leben, Körper, Gesundheit. Bei leicht fahrlässiger Verletzung von Kardinalpflichten ist die Haftung auf den vertragstypischen, vorhersehbaren Schaden begrenzt.4\nHaftung für leichte Fahrlässigkeit ist ausgeschlossen, außer bei Verletzung von Kardinalpflichten und Schäden an Leben, Körper, Gesundheit. Bei leicht fahrlässiger Verletzung von Kardinalpflichten ist die Haftung auf den Auftragswert begrenzt.\n(1) Haftung für leichte Fahrlässigkeit ist ausgeschlossen, außer bei Verletzung von Leben, Körper, Gesundheit und Kardinalpflichten. Bei Kardinalpflichtverletzung Begrenzung auf vorhersehbaren, typischen Schaden.\n(2) Haftung für Folgeschäden bei leichter Fahrlässigkeit ausgeschlossen.\n(2) Haftung für leichte Fahrlässigkeit, auch bei Kardinalpflichtverletzung, ist ausgeschlossen.",
+                    "variants": [
+                        {
+                            "favorability": "Most Favorable",
+                            "justification": "This clause limits the supplier's liability for slight negligence to breaches of cardinal duties or damages to life, body, or health, and further limits liability to typical, foreseeable damages in cases of slight negligence.",
+                            "text": "Die Haftung des Lieferanten für leichte Fahrlässigkeit ist ausgeschlossen, es sei denn, es handelt sich um die Verletzung von Kardinalpflichten oder Schäden an Leben, Körper, Gesundheit. Bei leicht fahrlässiger Verletzung von Kardinalpflichten ist die Haftung auf den vertragstypischen, vorhersehbaren Schaden begrenzt."
+                        },
+                        {
+                            "favorability": "Balanced",
+                            "justification": "This clause excludes liability for slight negligence except in cases of breaches of cardinal duties and damages to life, body, or health. However, it limits liability to the contract value in cases of slight negligence in breaches of cardinal duties.",
+                            "text": "Haftung für leichte Fahrlässigkeit ist ausgeschlossen, außer bei Verletzung von Kardinalpflichten und Schäden an Leben, Körper, Gesundheit. Bei leicht fahrlässiger Verletzung von Kardinalpflichten ist die Haftung auf den Auftragswert begrenzt."
+                        },
+                        {
+                            "favorability": "Acceptable",
+                            "justification": "This clause excludes liability for slight negligence except in cases of breaches of life, body, health, and cardinal duties. It limits liability to typical, foreseeable damages in cases of slight negligence in breaches of cardinal duties.",
+                            "text": "Haftung für leichte Fahrlässigkeit ist ausgeschlossen, außer bei Verletzung von Leben, Körper, Gesundheit und Kardinalpflichten. Bei Kardinalpflichtverletzung Begrenzung auf vorhersehbaren, typischen Schaden."
+                        },
+                        {
+                            "favorability": "Unacceptable",
+                            "justification": "This clause excludes liability for consequential damages in cases of slight negligence, which may not be favorable as it does not provide any exceptions or limitations.",
+                            "text": "Haftung für Folgeschäden bei leichter Fahrlässigkeit ausgeschlossen."
+                        }
+                    ]
+                }
+            ],
+            "title": "Cluster 10"
+        },
+        {
+            "clauses": [
+                {
+                    "text": "(2) Die Haftung für mittelbare Schäden und entgangenen Gewinn ist bei leichter Fahrlässigkeit ausgeschlossen.\n(2) Die Haftung für mittelbare Schäden und entgangenen Gewinn ist bei leichter Fahrlässigkeit ausgeschlossen.",
+                    "variants": [
+                        {
+                            "favorability": "Most favorable",
+                            "justification": "This clause excludes liability for indirect damages and lost profits in cases of slight negligence, which is highly favorable as it limits the scope of liability significantly.",
+                            "text": "Die Haftung für mittelbare Schäden und entgangenen Gewinn ist bei leichter Fahrlässigkeit ausgeschlossen."
+                        },
+                        {
+                            "favorability": "Balanced",
+                            "justification": "This variant balances the interests of both parties by excluding liability for indirect damages and lost profits in cases of slight negligence, except when essential contractual obligations are breached.",
+                            "text": "Die Haftung für mittelbare Schäden und entgangenen Gewinn ist bei leichter Fahrlässigkeit ausgeschlossen, es sei denn, es handelt sich um eine Verletzung wesentlicher Vertragspflichten."
+                        },
+                        {
+                            "favorability": "Acceptable",
+                            "justification": "This version is acceptable as it limits liability for indirect damages and lost profits in cases of slight negligence but makes exceptions for foreseeable damages or those that could have been prevented with reasonable measures.",
+                            "text": "Die Haftung für mittelbare Schäden und entgangenen Gewinn ist bei leichter Fahrlässigkeit ausgeschlossen, es sei denn, der Schaden war vorhersehbar oder hätte durch zumutbare Maßnahmen verhindert werden können."
+                        }
+                    ]
+                }
+            ],
+            "title": "Cluster 11"
+        },
+        {
+            "clauses": [
+                {
+                    "text": "Die Parteien vereinbaren Stillschweigen über die Konditionen dieses Vertrages.\nDie Parteien vereinbaren Stillschweigen über die Konditionen dieses Vertrages.",
+                    "variants": [
+                        {
+                            "favorability": "Most Favorable",
+                            "justification": "This clause ensures that both parties maintain confidentiality regarding the terms of the agreement, protecting sensitive information and preventing potential disadvantages in future negotiations.",
+                            "text": "Die Parteien vereinbaren Stillschweigen über die Konditionen dieses Vertrages."
+                        },
+                        {
+                            "favorability": "Balanced",
+                            "justification": "This variant balances confidentiality with legal compliance, allowing disclosure only when required by law or court order, which provides flexibility in exceptional circumstances.",
+                            "text": "Beide Parteien vereinbaren Stillschweigen über die Konditionen dieses Vertrages, es sei denn, eine Offenlegung ist gesetzlich vorgeschrieben oder durch gerichtliche Anordnung erforderlich."
+                        },
+                        {
+                            "favorability": "Acceptable",
+                            "justification": "This clause maintains confidentiality but allows for disclosure with mutual written consent, providing a mechanism for information sharing when both parties agree.",
+                            "text": "Die Parteien vereinbaren Stillschweigen über die Konditionen dieses Vertrages, es sei denn, beide Parteien stimmen einer Offenlegung schriftlich zu."
+                        },
+                        {
+                            "favorability": "Unacceptable",
+                            "justification": "This clause compromises confidentiality by allowing unilateral disclosure, which can lead to potential misuse of information and disadvantages for the other party.",
+                            "text": "Die Parteien vereinbaren Stillschweigen über die Konditionen dieses Vertrages, es sei denn, eine Partei entscheidet, dass die Offenlegung in ihrem besten Interesse ist."
+                        }
+                    ]
+                }
+            ],
+            "title": "Cluster 12"
+        },
+        {
+            "clauses": [
+                {
+                    "text": "Der Lieferant bestätigt, die Grundsätze des LkSG zu beachten und auf Anfrage Auskunft zu erteilen.\nDer Lieferant bestätigt, die Grundsätze des LkSG zu beachten und auf Anfrage Auskunft zu erteilen.100",
+                    "variants": [
+                        {
+                            "favorability": "Most Favorable",
+                            "justification": "Diese Variante ist am günstigsten, da sie eine klare Verpflichtung des Lieferanten zur Einhaltung der LkSG-Grundsätze sowie zur umfassenden Auskunftserteilung einschließlich der Bereitstellung relevanter Dokumente und Nachweise beinhaltet.",
+                            "text": "Der Lieferant verpflichtet sich, die Grundsätze des LkSG zu beachten und auf Anfrage umfassende Auskünfte zu erteilen, einschließlich der Bereitstellung relevanter Dokumente und Nachweise."
+                        },
+                        {
+                            "favorability": "Balanced",
+                            "justification": "Diese Variante ist ausgewogen, da sie sowohl die Bestätigung der Einhaltung der LkSG-Grundsätze als auch die Verpflichtung zur Auskunftserteilung auf Anfrage enthält, jedoch ohne zusätzliche Verpflichtungen zur Bereitstellung von Dokumenten oder Nachweisen.",
+                            "text": "Der Lieferant bestätigt, die Grundsätze des LkSG zu beachten und auf Anfrage Auskunft zu erteilen."
+                        },
+                        {
+                            "favorability": "Acceptable",
+                            "justification": "Diese Variante ist akzeptabel, da sie die Einhaltung der LkSG-Grundsätze und die Auskunftserteilung auf Anfrage vorsieht, jedoch ohne eine ausdrückliche Bestätigung oder Verpflichtung des Lieferanten.",
+                            "text": "Der Lieferant wird die Grundsätze des LkSG einhalten und auf Anfrage Auskunft erteilen."
+                        }
+                    ]
+                }
+            ],
+            "title": "Cluster 13"
+        },
+        {
+            "clauses": [
+                {
+                    "text": "(1) Deutsches Recht unter Ausschluss UN-Kaufrecht. Gerichtsstand: Musterstadt.\n(1) Deutsches Recht unter Ausschluss UN-Kaufrecht. Gerichtsstand: Musterstadt.\nDeutsches Recht (ohne UN-Kaufrecht). Gerichtsstand Köln. Schriftform. Salvatorische Klausel.\nDeutsches Recht (ohne UN-Kaufrecht). Gerichtsstand Mannheim. Änderungen bedürfen der Schriftform. Salvatorische Klausel.\nDeutsches Recht (ohne UN-Kaufrecht). Gerichtsstand Duisburg. Sollten Teile unwirksam sein, gilt der Rest.\nDeutsches Recht (ohne UN-Kaufrecht). Gerichtsstand Leipzig. Salvatorische Klausel.",
+                    "variants": [
+                        {
+                            "favorability": "Most Favorable",
+                            "justification": "This clause specifies the application of German law excluding CISG, with Musterstadt as the exclusive place of jurisdiction. This provides clarity and certainty regarding the legal framework and dispute resolution venue.",
+                            "text": "German law applies, excluding UN Convention on Contracts for the International Sale of Goods (CISG). Exclusive place of jurisdiction is Musterstadt."
+                        },
+                        {
+                            "favorability": "Balanced",
+                            "justification": "This clause provides a clear legal framework and jurisdiction, but the requirement for written agreements adds a layer of formality that could be seen as either beneficial or burdensome depending on the context.",
+                            "text": "German law applies, excluding CISG. Exclusive place of jurisdiction is Cologne. All agreements must be in writing. If any part of the agreement is invalid, the remainder shall remain in effect."
+                        },
+                        {
+                            "favorability": "Acceptable",
+                            "justification": "This clause is similar to the 'Balanced' variant but specifies Mannheim as the jurisdiction. The requirement for written modifications adds a layer of formality, but overall, the clause is reasonable.",
+                            "text": "German law applies, excluding CISG. Exclusive place of jurisdiction is Mannheim. Any modifications require written form. If any part of the agreement is invalid, the remainder shall remain in effect."
+                        },
+                        {
+                            "favorability": "Unacceptable",
+                            "justification": "While this clause provides a clear legal framework and jurisdiction, it lacks the formality of requiring written agreements or modifications, which could potentially lead to disputes or misunderstandings.",
+                            "text": "German law applies, excluding CISG. Exclusive place of jurisdiction is Leipzig. If any part of the agreement is invalid, the remainder shall remain in effect."
+                        }
+                    ]
+                }
+            ],
+            "title": "Cluster 14"
+        },
+        {
+            "clauses": [
+                {
+                    "text": "(2) Schriftformklausel. Salvatorische Klausel.\n(2) Schriftformklausel. Salvatorische Klausel.2",
+                    "variants": [
+                        {
+                            "favorability": "Balanced",
+                            "justification": "This clause ensures that any changes to the contract must be in writing, providing clarity and security. The severability clause maintains the validity of the rest of the contract if one part is invalid.",
+                            "text": "Vertragsänderungen bedürfen der Schriftform. Sollte eine Bestimmung unwirksam sein, bleibt der Vertrag im Übrigen wirksam."
+                        },
+                        {
+                            "favorability": "Most Favorable",
+                            "justification": "This version strengthens the contract by ensuring that any invalid clause is replaced by a legally valid one that closely matches the economic purpose of the original clause.",
+                            "text": "Änderungen des Vertrags müssen schriftlich erfolgen. Sollte eine Klausel unwirksam sein, wird diese durch eine rechtswirksame Regelung ersetzt, die dem wirtschaftlichen Zweck der unwirksamen Klausel am nächsten kommt."
+                        },
+                        {
+                            "favorability": "Unacceptable",
+                            "justification": "This clause poses a high risk as it stipulates that the entire contract becomes invalid if one provision is invalid, leading to significant uncertainty.",
+                            "text": "Vertragsänderungen sind nur in Schriftform gültig. Sollte eine Bestimmung unwirksam sein, wird der Vertrag insgesamt unwirksam."
+                        }
+                    ]
+                }
+            ],
+            "title": "Cluster 15"
+        },
+        {
+            "clauses": [
+                {
+                    "text": "Lieferung von Komponenten Typ K-100 gemäß Spezifikation (Anhang 1) und Zeichnungen (Anhang 2).\nLieferung von Komponenten Typ K-100 gemäß Spezifikation (Anhang 1) und Zeichnungen (Anhang 2).",
+                    "variants": [
+                        {
+                            "favorability": "Most Favorable",
+                            "justification": "This variant is most favorable as it clearly specifies the components to be delivered and the standards they must meet, ensuring compliance and quality.",
+                            "text": "Delivery of K-100 components according to specification (Annex 1) and drawings (Annex 2)."
+                        },
+                        {
+                            "favorability": "Balanced",
+                            "justification": "This variant is balanced as it mentions agreed specifications, implying mutual consent, and provides details through drawings, ensuring clarity and mutual understanding.",
+                            "text": "Supply of K-100 components as per the agreed specifications (Annex 1) and detailed in the drawings (Annex 2)."
+                        },
+                        {
+                            "favorability": "Acceptable",
+                            "justification": "This variant is acceptable as it outlines the specifications and illustrations for the components, providing necessary information, but it lacks the clarity of mutual agreement present in the balanced variant.",
+                            "text": "Provision of K-100 components following the specifications outlined in Annex 1 and illustrated in Annex 2."
+                        },
+                        {
+                            "favorability": "Unacceptable",
+                            "justification": "This variant is unacceptable as it lacks specificity regarding the component type, specifications, and drawings, leading to potential misunderstandings and non-compliance with required standards.",
+                            "text": "Delivery of components based on the details provided."
+                        }
+                    ]
+                }
+            ],
+            "title": "Cluster 16"
+        },
+        {
+            "clauses": [
+                {
+                    "text": "Der Lieferant sicht zu, dass die Ware den Spezifikationen entspricht und frei von Sach- und Rechtsmängeln ist. Qualitätssicherung nach ISO 9001 wird angestrebt.\nDer Lieferant sichert zu, dass die Ware den Spezifikationen entspricht und frei von Sach- und Rechtsmängeln ist. Qualitätssicherung nach ISO 9001 wird angestrebt.",
+                    "variants": [
+                        {
+                            "favorability": "Most Favorable",
+                            "justification": "This clause ensures that the supplier commits to delivering goods that meet the specified standards and are free from defects, with a quality assurance system in place.",
+                            "text": "Der Lieferant sicht zu, dass die Ware den Spezifikationen entspricht und frei von Sach- und Rechtsmängeln ist. Qualitätssicherung nach ISO 9001 wird angestrebt."
+                        },
+                        {
+                            "favorability": "Most Favorable",
+                            "justification": "This clause ensures that the supplier commits to delivering goods that meet the specified standards and are free from defects, with a quality assurance system in place.",
+                            "text": "Der Lieferant sichert zu, dass die Ware den Spezifikationen entspricht und frei von Sach- und Rechtsmängeln ist. Qualitätssicherung nach ISO 9001 wird angestrebt."
+                        }
+                    ]
+                }
+            ],
+            "title": "Cluster 17"
+        },
+        {
+            "clauses": [
+                {
+                    "text": "Bei schuldhaftem Verzug um mehr als 10 Werktage kann der Kunde nach Setzung einer angemessenen Nachfrist vom Vertrag zurücktreten. Schadensersatz für Verzug ist auf 50% des vorhersehbaren Schadens begrenzt.\nPreise gemäß Angebot vom [Datum]. Preisanpassungen sind jährlich möglich bei nachgewiesenen Kostensteigerungen > 5% (z.B. Materialpreisgleitklausel bezogen auf Index XYZ).\nGegenseitige Geheimhaltungspflicht bezüglich vertraulicher Informationen.\nBeide Parteien bekennen sich zur Einhaltung der Grundsätze des LkSG und informieren sich gegenseitig bei relevanten Risiken.\nLieferung von Elektronikkomponenten (Liste in Anhang 1) gemäß den technischen Spezifikationen (Anhang 2).\n(1) Preise gemäß Lieferantenpreisliste, gültig bis auf Widerruf.\nHerstellung und Lieferung von Gussteilen gemäß Spezifikation AG-Guss-001 (Anlage).\nDer Auftragnehmer sicht die Einhaltung der Spezifikation und übliche Gussqualität zu.\nNacherfüllung nach Wahl des Auftragnehmers. Kosten trägt der Auftragnehmer, jedoch ohne Aus- und Einbaukosten.\nLiefertermine sind Planungstermine. Lieferung FCA Duisburg (Incoterms 2020).\nPreise gemäß Angebot, Anpassung bei Rohstoffpreisänderung > 10% vorbehalten.\nLieferung von Standard-Kunststoffteilen gemäß Katalog Verkäufer (Stand [Datum]).\n(1) Qualität gemäß Datenblatt. Geringfügige Abweichungen sind zulässig.\n(3) Nacherfüllung nach Wahl des Verkäufers. Käufer trägt Kosten für Aus- und Einbau.\n(2) Keine Haftung für Lieferverzug, außer bei Vorsatz oder grober Fahrlässigkeit.\n(1) Preise gemäß jeweils aktueller Preisliste des Verkäufers.",
+                    "variants": [
+                        {
+                            "favorability": "Most Favorable",
+                            "justification": "This variant includes clear provisions for delay penalties, price adjustments, confidentiality, compliance, and detailed delivery specifications, offering comprehensive protection and clarity for both parties.",
+                            "text": "In case of culpable delay of more than 10 working days, the customer can withdraw from the contract after setting a reasonable grace period. Damages for delay are limited to 50% of the foreseeable damage.Prices according to offer dated [date]. Price adjustments are possible annually in the event of proven cost increases of more than 5% (e.g. material price sliding clause based on index XYZ).Mutual confidentiality obligation with regard to confidential information.Both parties commit to comply with the principles of the LkSG and inform each other of relevant risks.Delivery of electronic components (list in Annex 1) in accordance with the technical specifications (Annex 2)."
+                        },
+                        {
+                            "favorability": "Balanced",
+                            "justification": "This variant provides a balance between the parties' interests, with clear pricing and quality standards, but includes some limitations on liability and cost responsibilities that may require negotiation.",
+                            "text": "(1) Prices according to the supplier's price list, valid until revoked.(1) Quality according to data sheet. Minor deviations are permitted.(3) Subsequent performance at the seller's choice. Buyer bears costs for dismantling and installation.(2) No liability for delivery delays, except in cases of intent or gross negligence.(1) Prices according to the respective current price list of the seller.Production and delivery of cast parts according to specification AG-Guss-001 (attachment).The contractor undertakes to comply with the specification and the usual casting quality.Subsequent performance at the contractor's choice. The contractor bears the costs, but without dismantling and installation costs.Delivery deadlines are planning deadlines. Delivery FCA Duisburg (Incoterms 2020).Prices according to offer, adjustment reserved in case of raw material price change > 10%."
+                        },
+                        {
+                            "favorability": "Acceptable",
+                            "justification": "This variant is concise and focuses on the delivery of standard plastic parts, which may be sufficient for straightforward transactions but lacks detailed provisions on delay penalties, price adjustments, and compliance commitments.",
+                            "text": "Delivery of standard plastic parts according to the seller's catalog (as of [date])."
+                        },
+                        {
+                            "favorability": "Unacceptable",
+                            "justification": "This variant lacks crucial details on pricing, delay penalties, confidentiality, and compliance, making it insufficient for comprehensive contractual protection.",
+                            "text": "Lieferung von Elektronikkomponenten (Liste in Anhang 1) gemäß den technischen Spezifikationen (Anhang 2)."
+                        }
+                    ]
+                }
+            ],
+            "title": "Cluster -1"
+        },
+        {
+            "clauses": [
+                {
+                    "text": "Haftung für Vorsatz und grobe Fahrlässigkeit ist unbeschränkt.\n(2) Haftung für Verzugsschäden ist auf Vorsatz und grobe Fahrlässigkeit beschränkt.\nVerzugsschaden nur bei grober Fahrlässigkeit oder Vorsatz des Auftragnehmers.\nDie Haftung des Auftragnehmers ist auf Vorsatz und grobe Fahrlässigkeit beschränkt. Dies gilt nicht für Schäden an Leben, Körper, Gesundheit und bei Verletzung von Kardinalpflichten. Bei leicht fahrlässiger Verletzung von Kardinalpflichten ist die Haftung auf den Auftragswert begrenzt.\n(1) Haftung ist auf Vorsatz und grobe Fahrlässigkeit beschränkt, außer bei Schäden an Leben, Körper, Gesundheit.",
+                    "variants": [
+                        {
+                            "favorability": "Balanced",
+                            "justification": "This clause balances the interests of both parties by limiting liability to intentional and grossly negligent acts but makes exceptions for critical areas such as life, body, health, and cardinal duties. It also provides a clear limitation on liability for slightly negligent breaches of cardinal duties.",
+                            "text": "The liability of the contractor is limited to intentional and grossly negligent acts, except for damages to life, body, health, and in case of breach of cardinal duties. In case of slightly negligent breach of cardinal duties, the liability is limited to the value of the contract."
+                        },
+                        {
+                            "favorability": "Most Favorable",
+                            "justification": "This variant is most favorable as it strictly limits liability to only intentional and grossly negligent acts, providing the maximum protection for the party seeking to limit their liability.",
+                            "text": "Liability is limited to intentional and grossly negligent acts, with no exceptions."
+                        },
+                        {
+                            "favorability": "Acceptable",
+                            "justification": "While this clause limits liability for delay damages, it does not address other types of damages, making it less comprehensive but still acceptable in certain contexts.",
+                            "text": "Liability for delay damages is limited to intentional and grossly negligent acts of the contractor."
+                        }
+                    ]
+                }
+            ],
+            "title": "Cluster 18"
+        },
+        {
+            "clauses": [
+                {
+                    "text": "(1) Liefertermine sind unverbindlich, es sei denn, sie werden schriftlich als Fixtermine bestätigt. Lieferung EXW Mannheim (Incoterms 2020).\n(1) Lieferzeiten sind unverbindliche Schätzungen. Lieferung EXW Leipzig (Incoterms 2020).",
+                    "variants": [
+                        {
+                            "favorability": "Most Favorable",
+                            "justification": "This variant is most favorable because it ensures that delivery dates are binding and must be confirmed in writing, providing certainty and security for the customer.",
+                            "text": "Liefertermine sind verbindlich und müssen schriftlich als Fixtermine bestätigt werden. Lieferung EXW Mannheim (Incoterms 2020)."
+                        },
+                        {
+                            "favorability": "Balanced",
+                            "justification": "This variant is balanced because it acknowledges that delivery times are estimates and may change, providing flexibility for both parties.",
+                            "text": "Lieferzeiten sind unverbindliche Schätzungen und können sich ändern. Lieferung EXW Leipzig (Incoterms 2020)."
+                        },
+                        {
+                            "favorability": "Acceptable",
+                            "justification": "This variant is acceptable because it allows for flexibility in delivery dates unless they are confirmed in writing, which provides some level of commitment.",
+                            "text": "Liefertermine sind unverbindlich, es sei denn, sie werden schriftlich als Fixtermine bestätigt. Lieferung EXW Mannheim (Incoterms 2020)."
+                        }
+                    ]
+                }
+            ],
+            "title": "Cluster 19"
+        }
+    ]
+}
