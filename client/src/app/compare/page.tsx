@@ -15,7 +15,6 @@ const ComparePage = () => {
     activeSection, 
     activeClause,
     openSections,
-    setOpenSections,
     handleSectionClick,
     handleClauseClick,
     contentRef,
@@ -52,8 +51,6 @@ const ComparePage = () => {
     }));
   };
 
-  const [viewMode, setViewMode] = useState('unified');
-
   return (
     <div className="flex h-screen bg-background">
       <CompareSidebar
@@ -66,19 +63,8 @@ const ComparePage = () => {
         classifications={classifications}
       />
       <main className="flex-1 flex flex-col overflow-hidden">
-        <div className="border-b border-border p-4 bg-background flex items-center justify-between">
+        <div className="border-b border-border p-4 bg-background">
           <h1 className="text-xl font-semibold">Contract Analysis</h1>
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-muted-foreground">View Mode:</span>
-            <select 
-              className="text-sm border rounded px-2 py-1 bg-background"
-              onChange={(e) => e.target.value === 'split' ? setViewMode('split') : setViewMode('unified')}
-              defaultValue="unified"
-            >
-              <option value="unified">Unified View</option>
-              <option value="split">Side-by-Side Diff</option>
-            </select>
-          </div>
         </div>
         <motion.div 
           className="flex-1 overflow-y-auto scroll-smooth p-6" 
@@ -98,6 +84,7 @@ const ComparePage = () => {
               classifications={classifications}
               improvedClauses={improvedClauses}
               onApplyArgument={handleApplyArgument}
+              onSectionClick={handleSectionClick}
             />
           </div>
         </motion.div>

@@ -7,6 +7,7 @@ import { PlaybookSearch } from "@/components/playbook/PlaybookSearch";
 import { PlaybookSectionList } from "@/components/playbook/PlaybookSectionList";
 import { usePlaybookNavigation } from '@/hooks/usePlaybookNavigation';
 import { usePlaybookSearch } from '@/hooks/usePlaybookSearch';
+import { useState } from "react";
 
 export default function PlaybookPage() {
   // Navigation state

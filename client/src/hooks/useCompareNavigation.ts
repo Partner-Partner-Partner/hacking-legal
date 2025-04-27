@@ -1,81 +1,78 @@
-import { useState, useRef, useEffect } from "react";
-import { Contract } from "@/types/contract";
-import { ContractSection } from "@/types/playbook";
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { Contract } from '@/types/contract';
+import { ContractSection } from '@/types/playbook';
 
+/**
+ * A custom hook for navigating between sections and clauses of a contract comparison
+ */
 export function useCompareNavigation(contract: Contract, playbook: ContractSection[]) {
-  // Track active section and clause
+  // State for tracking active sections and clauses
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [activeClause, setActiveClause] = useState<string | null>(null);
-  
-  // Track expanded sections
   const [openSections, setOpenSections] = useState<string[]>([]);
   
-  // Reference to content container for scrolling
+  // Reference to the content scrollable area
   const contentRef = useRef<HTMLDivElement>(null);
 
-  // Handle section click
-  const handleSectionClick = (sectionTitle: string) => {
-    setActiveSection(sectionTitle);
+  // Handle section click - toggle expanded state
+  const handleSectionClick = useCallback((sectionId: string) => {
+    setOpenSections(prev => 
+      prev.includes(sectionId)
+        ? prev.filter(id => id !== sectionId)
+        : [...prev, sectionId]
+    );
+    setActiveSection(sectionId);
     setActiveClause(null);
     
-    // Toggle open sections
-    if (openSections.includes(sectionTitle)) {
-      setOpenSections(openSections.filter(s => s !== sectionTitle));
-    } else {
-      setOpenSections([...openSections, sectionTitle]);
-    }
-    
-    // Scroll to the section
+    // Scroll to the section if necessary
     setTimeout(() => {
-      if (contentRef.current) {
-        const element = document.getElementById(`section-${sectionTitle}`);
-        if (element) {
-          const containerTop = contentRef.current.getBoundingClientRect().top;
-          const elementTop = element.getBoundingClientRect().top;
-          contentRef.current.scrollTop += elementTop - containerTop - 20;
-        }
+      const element = document.getElementById(`section-${sectionId}`);
+      if (element && contentRef.current) {
+        contentRef.current.scrollTo({
+          top: element.offsetTop - 20,
+          behavior: 'smooth'
+        });
       }
     }, 100);
-  };
+  }, []);
 
-  // Handle clause click
-  const handleClauseClick = (sectionTitle: string, clauseId: string) => {
-    setActiveSection(sectionTitle);
+  // Handle clause click - set active clause
+  const handleClauseClick = useCallback((sectionId: string, clauseId: string) => {
+    setActiveSection(sectionId);
     setActiveClause(clauseId);
     
-    // Ensure section is open
-    if (!openSections.includes(sectionTitle)) {
-      setOpenSections([...openSections, sectionTitle]);
-    }
+    // Ensure the section is open
+    setOpenSections(prev => 
+      prev.includes(sectionId) ? prev : [...prev, sectionId]
+    );
     
-    // Scroll to the clause
+    // Scroll to the clause if necessary
     setTimeout(() => {
-      if (contentRef.current) {
-        const element = document.getElementById(`clause-${sectionTitle}-${clauseId}`);
-        if (element) {
-          const containerTop = contentRef.current.getBoundingClientRect().top;
-          const elementTop = element.getBoundingClientRect().top;
-          contentRef.current.scrollTop += elementTop - containerTop - 20;
-        }
+      const element = document.getElementById(`clause-${sectionId}-${clauseId}`);
+      if (element && contentRef.current) {
+        contentRef.current.scrollTo({
+          top: element.offsetTop - 40,
+          behavior: 'smooth'
+        });
       }
     }, 100);
-  };
+  }, []);
 
-  // Initialize with first section open
+  // Initialize with the first section if no active section
   useEffect(() => {
-    if (contract.sections.length > 0 && openSections.length === 0) {
-      setOpenSections([contract.sections[0].title]);
-      setActiveSection(contract.sections[0].title);
+    if (contract && contract.sections.length > 0 && !activeSection) {
+      const firstSectionId = contract.sections[0].title;
+      setActiveSection(firstSectionId);
+      setOpenSections([firstSectionId]);
     }
-  }, [contract.sections, openSections.length]);
+  }, [contract, activeSection]);
 
   return {
     activeSection,
     activeClause,
     openSections,
-    setOpenSections,
     handleSectionClick,
     handleClauseClick,
-    contentRef,
+    contentRef
   };
 }

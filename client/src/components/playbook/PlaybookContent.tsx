@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ContractClause, ContractSection } from '../../types/playbook';
+import { ContractClause, ContractSection, NegotiationArgument } from '../../types/playbook';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -38,7 +38,12 @@ const HighlightText = ({ text, searchQuery }: { text: string; searchQuery?: stri
   }
 };
 
-const ClauseViewer = ({ clause, searchQuery }: { clause: ContractClause; searchQuery?: string }) => {
+interface ClauseViewerProps {
+  clause: ContractClause;
+  searchQuery?: string;
+}
+
+const ClauseViewer: React.FC<ClauseViewerProps> = ({ clause, searchQuery }) => {
   const [activeTab, setActiveTab] = useState("mostFavorable");
   
   // Auto-switch to tab with search match
@@ -79,6 +84,17 @@ const ClauseViewer = ({ clause, searchQuery }: { clause: ContractClause; searchQ
       background: "bg-red-50",
       text: "text-red-800",
     },
+  };
+  
+  // Helper to safely get argument text
+  const getArgumentText = (argObj: NegotiationArgument | string | undefined): { external: string, internal: string } | null => {
+    if (!argObj) return null;
+    
+    // If it's a string (legacy format), return it as external only
+    if (typeof argObj === 'string') return { external: argObj, internal: '' };
+    
+    // Otherwise return the structured object
+    return { external: argObj.external, internal: argObj.internal };
   };
   
   return (
@@ -156,68 +172,101 @@ const ClauseViewer = ({ clause, searchQuery }: { clause: ContractClause; searchQ
         >
           <h4 className="font-medium text-foreground mb-5 px-1">Negotiation Arguments</h4>
           
-          <div className="space-y-5 px-1">
+          <div className="space-y-8 px-1">
             {clause.arguments.toMostFavorable && (
-              <motion.div 
-                className="flex flex-col lg:flex-row gap-4"
-                initial={{ x: -5, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.3 }}
-              >
-                <div className="lg:w-32 shrink-0">
+              <div className="rounded-md border overflow-hidden">
+                <div className="bg-green-50 px-4 py-2 border-b">
                   <span className="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">
                     Most Favorable
                   </span>
                 </div>
-                <div className="flex-1 rounded-lg py-4 px-5 bg-green-50/50">
-                  <HighlightText 
-                    text={clause.arguments.toMostFavorable} 
-                    searchQuery={searchQuery}
-                  />
+                <div className="divide-y">
+                  <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x">
+                    <div className="p-4">
+                      <h5 className="text-sm font-medium mb-2 text-muted-foreground">External Argument</h5>
+                      <div className="text-sm">
+                        <HighlightText 
+                          text={getArgumentText(clause.arguments.toMostFavorable)?.external || ''} 
+                          searchQuery={searchQuery}
+                        />
+                      </div>
+                    </div>
+                    <div className="p-4 bg-amber-50/30">
+                      <h5 className="text-sm font-medium mb-2 text-amber-800">Internal Reasoning</h5>
+                      <div className="text-sm">
+                        <HighlightText 
+                          text={getArgumentText(clause.arguments.toMostFavorable)?.internal || ''} 
+                          searchQuery={searchQuery}
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </motion.div>
+              </div>
             )}
             
             {clause.arguments.toBalanced && (
-              <motion.div 
-                className="flex flex-col lg:flex-row gap-4"
-                initial={{ x: -5, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.4 }}
-              >
-                <div className="lg:w-32 shrink-0">
+              <div className="rounded-md border overflow-hidden">
+                <div className="bg-blue-50 px-4 py-2 border-b">
                   <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">
                     Balanced
                   </span>
                 </div>
-                <div className="flex-1 rounded-lg py-4 px-5 bg-blue-50/50">
-                  <HighlightText 
-                    text={clause.arguments.toBalanced} 
-                    searchQuery={searchQuery}
-                  />
+                <div className="divide-y">
+                  <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x">
+                    <div className="p-4">
+                      <h5 className="text-sm font-medium mb-2 text-muted-foreground">External Argument</h5>
+                      <div className="text-sm">
+                        <HighlightText 
+                          text={getArgumentText(clause.arguments.toBalanced)?.external || ''} 
+                          searchQuery={searchQuery}
+                        />
+                      </div>
+                    </div>
+                    <div className="p-4 bg-amber-50/30">
+                      <h5 className="text-sm font-medium mb-2 text-amber-800">Internal Reasoning</h5>
+                      <div className="text-sm">
+                        <HighlightText 
+                          text={getArgumentText(clause.arguments.toBalanced)?.internal || ''} 
+                          searchQuery={searchQuery}
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </motion.div>
+              </div>
             )}
             
             {clause.arguments.fromUnacceptable && (
-              <motion.div 
-                className="flex flex-col lg:flex-row gap-4"
-                initial={{ x: -5, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.5 }}
-              >
-                <div className="lg:w-32 shrink-0">
+              <div className="rounded-md border overflow-hidden">
+                <div className="bg-red-50 px-4 py-2 border-b">
                   <span className="inline-block px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-medium">
                     From Unacceptable
                   </span>
                 </div>
-                <div className="flex-1 rounded-lg py-4 px-5 bg-red-50/50">
-                  <HighlightText 
-                    text={clause.arguments.fromUnacceptable}
-                    searchQuery={searchQuery}
-                  />
+                <div className="divide-y">
+                  <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x">
+                    <div className="p-4">
+                      <h5 className="text-sm font-medium mb-2 text-muted-foreground">External Argument</h5>
+                      <div className="text-sm">
+                        <HighlightText 
+                          text={getArgumentText(clause.arguments.fromUnacceptable)?.external || ''} 
+                          searchQuery={searchQuery}
+                        />
+                      </div>
+                    </div>
+                    <div className="p-4 bg-amber-50/30">
+                      <h5 className="text-sm font-medium mb-2 text-amber-800">Internal Reasoning</h5>
+                      <div className="text-sm">
+                        <HighlightText 
+                          text={getArgumentText(clause.arguments.fromUnacceptable)?.internal || ''} 
+                          searchQuery={searchQuery}
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </motion.div>
+              </div>
             )}
           </div>
         </motion.div>
@@ -226,10 +275,16 @@ const ClauseViewer = ({ clause, searchQuery }: { clause: ContractClause; searchQ
   );
 };
 
-const SectionViewer = ({ section, showHeader = true, searchQuery }: { 
-  section: ContractSection; 
+interface SectionViewerProps {
+  section: ContractSection;
   showHeader?: boolean;
   searchQuery?: string;
+}
+
+const SectionViewer: React.FC<SectionViewerProps> = ({ 
+  section, 
+  showHeader = true, 
+  searchQuery 
 }) => {
   return (
     <div id={`section-${section.id}`} className="space-y-10">
@@ -251,7 +306,10 @@ const SectionViewer = ({ section, showHeader = true, searchQuery }: {
       <div className="space-y-12 divide-y divide-border">
         {section.clauses?.map((clause, index) => (
           <div key={clause.id} className={index > 0 ? "pt-10" : ""}>
-            <ClauseViewer clause={clause} searchQuery={searchQuery} />
+            <ClauseViewer 
+              clause={clause} 
+              searchQuery={searchQuery}
+            />
           </div>
         ))}
       </div>
@@ -259,7 +317,11 @@ const SectionViewer = ({ section, showHeader = true, searchQuery }: {
   );
 };
 
-export function PlaybookContent({ sections, showSectionHeaders = true, searchQuery }: PlaybookContentProps) {
+export function PlaybookContent({ 
+  sections, 
+  showSectionHeaders = true, 
+  searchQuery 
+}: PlaybookContentProps) {
   if (!sections || sections.length === 0) {
     return (
       <div className="py-8 text-center text-muted-foreground">

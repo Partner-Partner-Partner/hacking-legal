@@ -1,20 +1,21 @@
+import React from 'react';
 import { Contract } from "@/types/contract";
 import { ContractSection } from "@/types/playbook";
+import { ClauseClassification } from "@/types/comparison";
 import { useState } from "react";
 import { ChevronDown, ChevronRight, CheckCircle, AlertTriangle, HelpCircle, XCircle } from "lucide-react";
-import { ClauseClassification } from "@/types/comparison";
 
 interface CompareSidebarProps {
   contract: Contract;
   playbook: ContractSection[];
   activeSection: string | null;
   activeClause: string | null;
-  onSectionClick: (sectionTitle: string) => void;
-  onClauseClick: (sectionTitle: string, clauseId: string) => void;
+  onSectionClick: (sectionId: string) => void;
+  onClauseClick: (sectionId: string, clauseId: string) => void;
   classifications: ClauseClassification[];
 }
 
-export function CompareSidebar({
+export const CompareSidebar: React.FC<CompareSidebarProps> = ({
   contract,
   playbook,
   activeSection,
@@ -22,7 +23,20 @@ export function CompareSidebar({
   onSectionClick,
   onClauseClick,
   classifications,
-}: CompareSidebarProps) {
+}) => {
+  // Process contract to ensure compatibility with UI
+  const processedSections = contract.sections.map(section => {
+    // Process each section as needed
+    return {
+      id: section.id || section.title,
+      title: section.title,
+      clauses: section.clauses.map(clause => ({
+        id: clause.id || `clause-${Math.random().toString(36).substring(2, 9)}`,
+        text: clause.text
+      }))
+    };
+  });
+
   // Get classification for a specific clause
   const getClauseClassification = (sectionTitle: string, clauseText: string) => {
     const classification = classifications.find(
@@ -81,7 +95,7 @@ export function CompareSidebar({
       {/* Contract sections list */}
       <div className="overflow-y-auto flex-1 py-2">
         <div className="space-y-1">
-          {contract.sections.map((section) => {
+          {processedSections.map((section) => {
             // Find if there's a matching playbook section
             const hasPlaybookMatch = playbook.some(p => p.title === section.title);
             
