@@ -1,11 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import UploadField from '@/components/UploadField';
 import { useToast } from '@/providers/ToastProvider';
+import { uploadContractDocuments } from '@/api/contracts';
 
 export default function Home() {
   const { showToast } = useToast();
+  const router = useRouter();
   const [isUploading, setIsUploading] = useState(false);
   const [uploadStatus, setUploadStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [error, setError] = useState<string | undefined>();
@@ -18,29 +21,25 @@ export default function Home() {
     setError(undefined);
     
     try {
-      // Create form data
-      const formData = new FormData();
-      files.forEach(file => {
-        formData.append('contract_files', file);
+      // Use the new API function
+      const result = await uploadContractDocuments(files, (progress) => {
+        console.log(`Upload progress: ${progress}%`);
+        // You can use this progress info to update a progress bar
       });
       
-      // Simple fetch to API
-      const response = await fetch('http://localhost:8000/contracts/upload', {
-        method: 'POST',
-        body: formData,
-      });
-      
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail || 'Upload failed');
+      if (!result.success || !result.data) {
+        throw new Error(result.error || 'Upload failed');
       }
       
-      setUploadStatus('success');
+      const { contractId, playbookId } = result.data;
       
-      // Reset to idle state after 3 seconds
+      setUploadStatus('success');
+      showToast('Upload successful!', 'success');
+      
+      // Redirect to the comparison page after successful upload
       setTimeout(() => {
-        setUploadStatus('idle');
-      }, 3000);
+        router.push(`/compare/${contractId}?playbook=${playbookId}`);
+      }, 1000);
       
     } catch (err) {
       console.error('Upload error:', err);
