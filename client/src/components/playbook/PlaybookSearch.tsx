@@ -3,9 +3,17 @@ import { Input } from "@/components/ui/input";
 import { Command, CommandList, CommandItem, CommandEmpty } from "@/components/ui/command";
 import { Search, FileText, BookOpen, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { ContractSection } from '@/types/playbook';
-import { SearchResult } from '@/hooks/usePlaybookSearch';
+import { PlaybookSection, PlaybookVariant, ContractSection, ContractClause } from '@/types/playbook';
 import { HighlightMatches } from './HighlightMatches';
+
+// Updated search result type that supports both old and new formats
+export interface SearchResult {
+  type: "section" | "variant" | "clause";  // Added "clause" for backward compatibility
+  section: PlaybookSection | ContractSection;
+  variant?: PlaybookVariant;
+  clause?: ContractClause;      // Added for backward compatibility
+  matchContext?: string;
+}
 
 interface PlaybookSearchProps {
   search: string;
@@ -59,16 +67,29 @@ export function PlaybookSearch({
             </div>
             <CommandList>
               {searchResults.length === 0 && <CommandEmpty>No results found</CommandEmpty>}
-              {searchResults.map((item, i) => (
-                <CommandItem
-                  key={`${item.type}-${item.clause?.id || item.section.id}-${i}`}
-                  value={item.type === "section" ? item.section.title : item.clause.title}
-                  onSelect={() => onSearchSelect(item)}
-                  className="flex flex-col items-start px-3 py-2"
-                >
-                  <SearchResultItem item={item} query={search} />
-                </CommandItem>
-              ))}
+              {searchResults.map((item, i) => {
+                // Generate a unique key
+                const key = `${item.type}-${i}-${
+                  item.type === "section" ? item.section.title :
+                  item.type === "variant" && item.variant ? item.variant.favorability :
+                  item.type === "clause" && item.clause ? item.clause.id : "unknown"
+                }`;
+                
+                return (
+                  <CommandItem
+                    key={key}
+                    value={
+                      item.type === "section" ? item.section.title :
+                      item.type === "variant" && item.variant ? item.variant.favorability :
+                      item.type === "clause" && item.clause ? item.clause.title : ""
+                    }
+                    onSelect={() => onSearchSelect(item)}
+                    className="flex flex-col items-start px-3 py-2"
+                  >
+                    <SearchResultItem item={item} query={search} />
+                  </CommandItem>
+                );
+              })}
             </CommandList>
           </Command>
         </div>
@@ -78,6 +99,20 @@ export function PlaybookSearch({
 }
 
 function SearchResultItem({ item, query }: { item: SearchResult; query: string }) {
+  // Handle display for different types of results
+  const getDisplayTitle = () => {
+    if (item.type === "section") return item.section.title;
+    if (item.type === "variant" && item.variant) return item.variant.favorability;
+    if (item.type === "clause" && item.clause) return item.clause.title;
+    return "Unknown";
+  };
+
+  // Get section for badge display
+  const getSectionTitle = () => {
+    if (item.type === "section") return "Section";
+    return `In ${item.section.title.substring(0, 20)}...`;
+  };
+
   return (
     <>
       <div className="flex w-full items-center gap-2">
@@ -87,13 +122,13 @@ function SearchResultItem({ item, query }: { item: SearchResult; query: string }
           <FileText className="h-3.5 w-3.5 text-green-500 flex-shrink-0" />
         )}
         <span className="font-medium text-sm">
-          {item.type === "section" ? item.section.title : item.clause.title}
+          {getDisplayTitle()}
         </span>
       </div>
       
       <div className="w-full flex flex-col gap-1 mt-0.5">
         <Badge variant="outline" className="text-[10px] px-1.5 py-0 h-auto w-fit">
-          {item.type === "section" ? "Section" : `In ${item.section.title.substring(0, 20)}...`}
+          {getSectionTitle()}
         </Badge>
         {item.matchContext && (
           <p className="line-clamp-1 text-[11px] text-muted-foreground">

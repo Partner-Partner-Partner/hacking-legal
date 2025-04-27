@@ -51,8 +51,21 @@ export interface ContractRaw {
   sections: SectionRaw[];
 }
 
+/**
+ * Represents a contract with its sections and metadata
+ */
 export interface Contract {
+  id?: string;       // Made optional to allow for unsaved contracts
   title: string;
-  parties: Party[];
-  sections: Section[];
+  parties: Array<{
+    name: string;
+    role: string;
+  }>;
+  sections: Array<{
+    id: string;
+    title: string;
+    content: string;
+  }>;
+  createdAt?: string;
+  status?: 'draft' | 'active' | 'expired' | 'pending';
 }

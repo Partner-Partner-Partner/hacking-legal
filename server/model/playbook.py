@@ -1,3 +1,5 @@
+# Note: The beanie package is required for this code.
+# To install: pip install beanie pymongo motor
 from beanie import Document
 from pydantic import BaseModel, Field
 from typing import List, Optional

@@ -93,7 +93,15 @@ function CompareSidebarContent() {
     handleSectionClick,
     handleClauseClick,
     contentRef,
-  } = useCompareNavigation(contract, playbook);
+  } = useCompareNavigation(
+    // Use a properly typed fallback contract with only required properties
+    contract || { 
+      title: "Untitled Contract",
+      parties: [],
+      sections: []
+    } as Contract,
+    playbook
+  );
   
   // Track applied improvements
   const [improvedClauses, setImprovedClauses] = useState<Record<string, string>>({});

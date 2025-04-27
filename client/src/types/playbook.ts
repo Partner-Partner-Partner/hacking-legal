@@ -1,5 +1,45 @@
 /**
- * Represents a contract clause with different negotiation positions
+ * Type representing the favorability levels for playbook variants
+ */
+export type Favorability = "Most Favorable" | "Balanced" | "Acceptable" | "Unacceptable";
+
+/**
+ * Represents a variant of contract language with associated favorability and justification
+ */
+export interface PlaybookVariant {
+  text: string;
+  favorability: Favorability;
+  justification: string;
+}
+
+/**
+ * Represents a section of a playbook containing multiple variant options
+ */
+export interface PlaybookSection {
+  title: string;
+  variants: PlaybookVariant[];
+}
+
+/**
+ * Represents the complete playbook containing multiple sections
+ */
+export interface Playbook {
+  id: string;
+  sections: PlaybookSection[];
+}
+
+// Helper functions for working with playbooks
+
+/**
+ * Retrieves a specific variant by favorability from a section
+ */
+export function getVariantByFavorability(section: PlaybookSection, favorability: Favorability): PlaybookVariant | undefined {
+  return section.variants.find(variant => variant.favorability === favorability);
+}
+
+/**
+ * Legacy interface - maintained for backward compatibility during transition
+ * @deprecated Use PlaybookSection and PlaybookVariant instead
  */
 export interface ContractClause {
   id: string;
@@ -19,7 +59,8 @@ export interface ContractClause {
 }
 
 /**
- * Represents arguments used during contract negotiation
+ * Legacy interface - maintained for backward compatibility during transition
+ * @deprecated Use PlaybookVariant justification instead
  */
 export interface NegotiationArgument {
   external: string; // Arguments presented to the contract partner
@@ -27,7 +68,8 @@ export interface NegotiationArgument {
 }
 
 /**
- * Represents a section of a contract containing related clauses
+ * Legacy interface - maintained for backward compatibility during transition
+ * @deprecated Use PlaybookSection instead
  */
 export interface ContractSection {
   id: string;
