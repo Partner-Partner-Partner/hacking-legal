@@ -1,4 +1,7 @@
-from pydantic import BaseModel
+from beanie import Document
+from pydantic import BaseModel, Field
+from typing import List, Optional
+from uuid import uuid4, UUID
 
 
 class Clause(BaseModel):
@@ -7,7 +10,7 @@ class Clause(BaseModel):
 
 class Subsection(BaseModel):
     title: str
-    clauses: list[Clause] = []
+    clauses: List[Clause] = []
 
 
 class SectionRaw(BaseModel):
@@ -17,8 +20,8 @@ class SectionRaw(BaseModel):
 
 class Section(BaseModel):
     title: str
-    clauses: list[Clause] = []
-    subsections: list[Subsection] = []
+    clauses: List[Clause] = []
+    subsections: List[Subsection] = []
 
 
 class Party(BaseModel):
@@ -26,12 +29,13 @@ class Party(BaseModel):
 
 
 class ContractRaw(BaseModel):
-    parties: list[Party] = []
+    parties: List[Party] = []
     title: str
-    sections: list[SectionRaw] = []
+    sections: List[SectionRaw] = []
 
 
-class Contract(BaseModel):
+class Contract(Document):
+    id: Optional[UUID] = Field(default_factory=uuid4, alias="_id")
     title: str
-    parties: list[Party] = []
-    sections: list[Section] = []
+    parties: List[Party] = []
+    sections: List[Section] = []

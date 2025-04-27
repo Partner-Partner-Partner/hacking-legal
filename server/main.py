@@ -42,7 +42,7 @@ def read_root():
     return {"message": "Contract Processing API", "status": "running"}
 
 
-@app.post("/parse_contract/")
+@app.post("/upload_contract/")
 async def parse_contract(file: UploadFile = File(...)):
     """
     Upload a contract PDF and receive the parsed contract as structured JSON.
@@ -65,8 +65,6 @@ async def parse_contract(file: UploadFile = File(...)):
 async def upload_playbook(files: List[UploadFile] = File(...)):
     """
     Upload a set of contracts and build a playbook based on them"""
-
-    print("test")
 
     contracts = []
 
