@@ -7,7 +7,7 @@ class Clause(BaseModel):
 
 class Subsection(BaseModel):
     title: str
-    clauses: list[Clause]
+    clauses: list[Clause] = []
 
 
 class SectionRaw(BaseModel):
@@ -17,8 +17,8 @@ class SectionRaw(BaseModel):
 
 class Section(BaseModel):
     title: str
-    clauses: list[Clause]
-    subsections: list[Subsection]
+    clauses: list[Clause] = []
+    subsections: list[Subsection] = []
 
 
 class Party(BaseModel):
@@ -26,12 +26,12 @@ class Party(BaseModel):
 
 
 class ContractRaw(BaseModel):
-    parties: list[Party]
+    parties: list[Party] = []
     title: str
-    sections: list[SectionRaw]
+    sections: list[SectionRaw] = []
 
 
 class Contract(BaseModel):
     title: str
-    parties: list[Party]
-    sections: list[Section]
+    parties: list[Party] = []
+    sections: list[Section] = []

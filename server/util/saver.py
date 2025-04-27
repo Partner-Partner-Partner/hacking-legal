@@ -17,3 +17,7 @@ async def save_file_unique(file, upload_dir):
         buffer.write(await file.read())
 
     return file.filename, unique_filename
+
+
+def save_playbook(filename, tree):
+    tree.write(filename, encoding="utf-8", xml_declaration=True)

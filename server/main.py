@@ -2,9 +2,12 @@ import os
 import json
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, Response
+from pydantic import ValidationError
 from typing import List
-from util import clusterer, parser, loader, saver
+from util import clusterer, exporter, parser, loader, saver
+from loguru import logger
+import xml.etree.ElementTree as ET
 
 app = FastAPI()
 
@@ -71,12 +74,19 @@ async def upload_playbook(files: List[UploadFile] = File(...)):
         # Load the saved file
         contract_text = loader.load_file(file_path)
 
-        # Parse the contract from loaded file
-        contract = parser.full_parse2(contract_text)
+        try:
+            # Parse the contract from loaded file
+            contract = parser.full_parse2(contract_text)
 
-        contracts.append(contract)
+            contracts.append(contract)
+        except ValidationError as e:
+            logger.error(e)
 
-    return clusterer.cluster(contracts)
+    if not contracts:
+        raise HTTPException(status_code=400, detail="No valid contracts uploaded.")
+
+    clusters = clusterer.cluster(contracts)
+    return parser.generate_playbook(clusters)
 
 
 @app.post("/contracts/upload")

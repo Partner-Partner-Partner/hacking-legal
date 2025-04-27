@@ -1,1 +1,1 @@
-http -f POST http://localhost:8000/upload_playbook/ files@../data/Vertrag\ 04.docx files@../data/Vertrag\ 05.docx
+http -f POST http://localhost:8000/upload_playbook/ files@../data/Vertrag\ 04.docx files@../data/Vertrag\ 05.docx files@../data/Vertrag\ 06.docx files@../data/Vertrag\ 07.docx files@../data/Vertrag\ 08.docx files@../data/Vertrag\ 09.docx files@../data/Vertrag\ 10.docx
