@@ -41,17 +41,21 @@ export function AppLayout({
   const [searchOpen, setSearchOpen] = useState(false)
   
   // Initialize search hook with the playbook data
-  const { results: searchResults } = usePlaybookSearch(samplePlaybook, search)
+  const { searchResults, handleSearchSelect: hookSearchSelect } = usePlaybookSearch({
+    onSearchSelect: (result) => {
+      if (onSearchSelect) {
+        onSearchSelect(result)
+      } else {
+        // Default behavior - could be navigation or similar
+        console.log("Search result selected:", result)
+        setSearchOpen(false)
+      }
+    }
+  })
 
   // Handle search selection - default implementation
   const handleSearchSelect = (result: any) => {
-    if (onSearchSelect) {
-      onSearchSelect(result)
-    } else {
-      // Default behavior - could be navigation or similar
-      console.log("Search result selected:", result)
-      setSearchOpen(false)
-    }
+    hookSearchSelect(result)
   }
 
   // Convert playbook sections to tree items if in tree mode and no treeItems provided
