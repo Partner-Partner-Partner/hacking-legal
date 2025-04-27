@@ -30,7 +30,20 @@ cd hacking-legal
 docker-compose up --build
 ```
 
+### Useful Commands
+Stop all services:
+```bash
+docker-compose down
+```
+View logs:
+```bash
+docker-compose logs -f
+```
 
+Check running services:
+```bash
+docker-compose ps
+```
 
 
 
