@@ -3,8 +3,12 @@ import json
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from pydantic import ValidationError
 from typing import List
-from util import clusterer, parser, loader, saver
+from model.playbook import Playbook
+from util import clusterer, db, parser, loader, saver
+from loguru import logger
+from uuid import UUID
 
 app = FastAPI()
 
@@ -26,6 +30,11 @@ METADATA_FILE = os.path.join(UPLOAD_DIR, "metadata.json")
 if not os.path.exists(METADATA_FILE):
     with open(METADATA_FILE, "w") as f:
         json.dump([], f)
+
+
+@app.on_event("startup")
+async def on_startup():
+    await db.init_db()
 
 
 @app.get("/")
@@ -57,6 +66,8 @@ async def upload_playbook(files: List[UploadFile] = File(...)):
     """
     Upload a set of contracts and build a playbook based on them"""
 
+    print("test")
+
     contracts = []
 
     for file in files:
@@ -69,12 +80,29 @@ async def upload_playbook(files: List[UploadFile] = File(...)):
         # Load the saved file
         contract_text = loader.load_file(file_path)
 
-        # Parse the contract from loaded file
-        contract = parser.full_parse2(contract_text)
+        try:
+            # Parse the contract from loaded file
+            contract = parser.full_parse2(contract_text)
 
-        contracts.append(contract)
+            contracts.append(contract)
+        except ValidationError as e:
+            logger.error(e)
 
-    return {clause: label for (clause, label) in clusterer.cluster(contracts)}
+    if not contracts:
+        raise HTTPException(status_code=400, detail="No valid contracts uploaded.")
+
+    clusters = clusterer.cluster(contracts)
+    playbook = parser.generate_playbook(clusters)
+    await playbook.insert()
+    return {"playbook_id": playbook.id}
+
+
+@app.get("/playbooks/{id}", response_model=Playbook)
+async def get_playbook(id: UUID):
+    playbook = await Playbook.get(id)
+    if playbook is None:
+        raise HTTPException(status_code=404, detail="Playbook not found")
+    return playbook
 
 
 @app.post("/contracts/upload")
