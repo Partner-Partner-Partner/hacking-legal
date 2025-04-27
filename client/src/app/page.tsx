@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import UploadField from '@/components/UploadField';
 import { useToast } from '@/providers/ToastProvider';
-import { uploadContractDocuments } from '@/api/contracts';
+import { contractApi } from '@/api/client';
 
 export default function Home() {
   const { showToast } = useToast();
@@ -21,24 +21,18 @@ export default function Home() {
     setError(undefined);
     
     try {
-      // Use the new API function
-      const result = await uploadContractDocuments(files, (progress) => {
+      // Use the simplified API to upload files and get a playbook ID
+      const playbookId = await contractApi.uploadPlaybook(files, (progress) => {
         console.log(`Upload progress: ${progress}%`);
         // You can use this progress info to update a progress bar
       });
       
-      if (!result.success || !result.data) {
-        throw new Error(result.error || 'Upload failed');
-      }
-      
-      const { contractId, playbookId } = result.data;
-      
       setUploadStatus('success');
       showToast('Upload successful!', 'success');
       
-      // Redirect to the comparison page after successful upload
+      // Redirect to the playbook page after successful upload
       setTimeout(() => {
-        router.push(`/compare/${contractId}?playbook=${playbookId}`);
+        router.push(`/playbook/${playbookId}`);
       }, 1000);
       
     } catch (err) {

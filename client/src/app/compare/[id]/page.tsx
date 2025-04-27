@@ -1,30 +1,89 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams, useSearchParams } from 'next/navigation';
 import { motion } from "framer-motion";
-import { sampleContract } from "@/data/sampleContract";
-import { samplePlaybook } from "@/data/samplePlaybook";
 import { CompareSidebar } from "@/components/compare/CompareSidebar";
 import { DiffViewer } from "@/components/compare/DiffViewer";
 import { useCompareNavigation } from '@/hooks/useCompareNavigation';
 import { ClauseClassification } from "@/types/comparison";
+import { contractApi } from "@/api/client";
+import { Contract } from "@/types/contract";
+import { ContractSection } from "@/types/playbook";
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbList,
   BreadcrumbPage,
 } from "@/components/ui/breadcrumb";
-import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,
   SidebarProvider,
-  SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar";
 
 // Internal wrapper component to use the useSidebar hook
 function CompareSidebarContent() {
   const sidebar = useSidebar();
+  const params = useParams();
+  const searchParams = useSearchParams();
+  
+  const [contract, setContract] = useState<Contract | null>(null);
+  const [playbook, setPlaybook] = useState<ContractSection[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  
+  // Get the playbook ID from the URL query parameters
+  const playbookId = searchParams.get('playbook');
+  
+  // Track classifications for contract clauses
+  const [classifications, setClassifications] = useState<ClauseClassification[]>([]);
+  
+  // Load contract and playbook data
+  useEffect(() => {
+    const loadData = async () => {
+      if (!params.id || !playbookId) {
+        setError("Missing contract ID or playbook ID");
+        setLoading(false);
+        return;
+      }
+      
+      try {
+        // For a file upload comparison, we would use:
+        // const result = await contractApi.compareContract(file, playbookId);
+        
+        // For retrieving an existing comparison:
+        const contractData = await fetch(`/api/contracts/${params.id}`);
+        const playbookData = await fetch(`/api/playbooks/${playbookId}`);
+        const classificationData = await fetch(`/api/classifications/${params.id}`);
+        
+        if (!contractData.ok || !playbookData.ok) {
+          throw new Error("Failed to load data");
+        }
+        
+        const contract = await contractData.json();
+        const playbook = await playbookData.json();
+        
+        // Load automatic classifications if available
+        let autoClassifications: ClauseClassification[] = [];
+        if (classificationData.ok) {
+          autoClassifications = await classificationData.json();
+          setClassifications(autoClassifications);
+        }
+        
+        setContract(contract);
+        setPlaybook(playbook.sections);
+        
+      } catch (err) {
+        console.error("Error loading comparison data:", err);
+        setError("Failed to load comparison data");
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    loadData();
+  }, [params.id, playbookId]);
   
   // Track active sections and clauses
   const { 
@@ -34,10 +93,7 @@ function CompareSidebarContent() {
     handleSectionClick,
     handleClauseClick,
     contentRef,
-  } = useCompareNavigation(sampleContract, samplePlaybook);
-
-  // Track classifications for contract clauses
-  const [classifications, setClassifications] = useState<ClauseClassification[]>([]);
+  } = useCompareNavigation(contract, playbook);
   
   // Track applied improvements
   const [improvedClauses, setImprovedClauses] = useState<Record<string, string>>({});
@@ -57,6 +113,17 @@ function CompareSidebarContent() {
       // Add the new classification
       return [...filtered, newClassification];
     });
+    
+    // Send the classification to the backend
+    fetch(`/api/classifications/${params.id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newClassification),
+    }).catch(err => {
+      console.error("Error saving classification:", err);
+    });
   };
 
   const handleApplyArgument = (sectionTitle: string, clauseIndex: number, newText: string) => {
@@ -66,12 +133,20 @@ function CompareSidebarContent() {
       [key]: newText
     }));
   };
+  
+  if (loading) {
+    return <div className="flex justify-center items-center h-screen">Loading...</div>;
+  }
+  
+  if (error || !contract) {
+    return <div className="flex justify-center items-center h-screen">Error: {error}</div>;
+  }
 
   return (
     <>
       <CompareSidebar
-        contract={sampleContract}
-        playbook={samplePlaybook}
+        contract={contract}
+        playbook={playbook}
         activeSection={activeSection}
         activeClause={activeClause}
         onSectionClick={handleSectionClick}
@@ -97,8 +172,8 @@ function CompareSidebarContent() {
               </Breadcrumb>
             </div>
             <DiffViewer
-              contract={sampleContract}
-              playbook={samplePlaybook}
+              contract={contract}
+              playbook={playbook}
               openSections={openSections}
               activeSection={activeSection}
               activeClause={activeClause}
